@@ -1,0 +1,7 @@
+macTable.put(frame.sourceMac(), inPort);
+Integer outPort = macTable.get(frame.destinationMac());
+if (outPort == null) {
+    floodToAllPortsExcept(inPort);
+} else {
+    forwardTo(outPort);
+}

@@ -4,21 +4,22 @@ import { useSimulationStore } from "./simulationStore";
 import type { ScenarioErrorEvent, SimulationEvent } from "./types";
 
 export function subscribeToScenario(sessionId: string) {
-  useSimulationStore.getState().setSessionId(sessionId);
+  useSimulationStore.getState().initSession(sessionId);
 
   const eventSub = wsClient.subscribe(`/topic/scenario/${sessionId}`, (message: IMessage) => {
     const event: SimulationEvent = JSON.parse(message.body);
-    useSimulationStore.getState().addEvent(event);
+    useSimulationStore.getState().addEvent(sessionId, event);
   });
 
   const errorSub = wsClient.subscribe(`/topic/scenario/${sessionId}/errors`, (message: IMessage) => {
     const error: ScenarioErrorEvent = JSON.parse(message.body);
-    useSimulationStore.getState().setError(error.message);
+    useSimulationStore.getState().setError(sessionId, error.message);
   });
 
   return () => {
     eventSub.unsubscribe();
     errorSub.unsubscribe();
+    useSimulationStore.getState().removeSession(sessionId);
   };
 }
 

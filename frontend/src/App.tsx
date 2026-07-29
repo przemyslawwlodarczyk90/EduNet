@@ -3,9 +3,10 @@ import { ConnectionStatus } from './ConnectionStatus'
 import { ScenarioSelector } from './simulation/components/ScenarioSelector'
 import { ScenarioPage } from './simulation/ScenarioPage'
 import { FundamentalsPage } from './fundamentals/FundamentalsPage'
+import { PhysicalDataLinkPage } from './physicalDataLink/PhysicalDataLinkPage'
 import './App.css'
 
-type View = 'fundamentals' | 'scenarios'
+type View = 'fundamentals' | 'physical-data-link' | 'scenarios'
 
 function App() {
   const [view, setView] = useState<View>('fundamentals')
@@ -21,12 +22,17 @@ function App() {
         <button className={view === 'fundamentals' ? 'active' : ''} onClick={() => setView('fundamentals')}>
           Fundamenty
         </button>
+        <button className={view === 'physical-data-link' ? 'active' : ''} onClick={() => setView('physical-data-link')}>
+          Warstwa 1-2 (Fizyczna / Łącza danych)
+        </button>
         <button className={view === 'scenarios' ? 'active' : ''} onClick={() => setView('scenarios')}>
           Scenariusze (demo silnika)
         </button>
       </nav>
 
       {view === 'fundamentals' && <FundamentalsPage />}
+
+      {view === 'physical-data-link' && <PhysicalDataLinkPage />}
 
       {view === 'scenarios' && (
         <div className="app-layout">

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { useSimulationStore } from "../../simulation/simulationStore";
+import { useScenarioSession } from "../../simulation/simulationStore";
 import { subscribeToScenario, startScenario } from "../../simulation/scenarioClient";
 import { ScenarioControls } from "../../simulation/components/ScenarioControls";
 import { OSI_LAYER_LABELS } from "../../simulation/layerModel";
@@ -41,16 +41,15 @@ function nestLayers(outerToInner: OsiLayer[], core: ReactNode): ReactNode {
 }
 
 export function EncapsulationAnimation() {
-  const events = useSimulationStore((state) => state.events);
-  const currentStepIndex = useSimulationStore((state) => state.currentStepIndex);
   const sessionIdRef = useRef<string>(crypto.randomUUID());
+  const sessionId = sessionIdRef.current;
+  const { events, currentStepIndex } = useScenarioSession(sessionId);
 
   useEffect(() => {
-    const sessionId = sessionIdRef.current;
     const unsubscribe = subscribeToScenario(sessionId);
     startScenario(sessionId, ENCAPSULATION_DEMO_SCENARIO_ID);
     return unsubscribe;
-  }, []);
+  }, [sessionId]);
 
   const { wrappedLayers, currentPdu, currentDirection } = useMemo(() => {
     const wrapped = new Set<OsiLayer>();
@@ -74,7 +73,7 @@ export function EncapsulationAnimation() {
 
   return (
     <div className="encapsulation-animation">
-      <ScenarioControls />
+      <ScenarioControls sessionId={sessionId} />
       <div className="encapsulation-status">
         {currentDirection === "DECAPSULATION" ? "Dekapsulacja" : "Enkapsulacja"}
         {currentPdu ? ` — PDU: ${currentPdu}` : ""}

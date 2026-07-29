@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useSimulationStore } from "./simulationStore";
+import { useScenarioSession } from "./simulationStore";
 import { subscribeToScenario, startScenario } from "./scenarioClient";
 import { OsiLayerStack } from "./components/OsiLayerStack";
 import { PacketDetailsPanel } from "./components/PacketDetailsPanel";
@@ -12,23 +12,21 @@ interface ScenarioPageProps {
 }
 
 export function ScenarioPage({ scenarioId }: ScenarioPageProps) {
-  const events = useSimulationStore((state) => state.events);
-  const currentStepIndex = useSimulationStore((state) => state.currentStepIndex);
-  const error = useSimulationStore((state) => state.error);
   const sessionIdRef = useRef<string>(crypto.randomUUID());
+  const sessionId = sessionIdRef.current;
+  const { events, currentStepIndex, error } = useScenarioSession(sessionId);
 
   useEffect(() => {
-    const currentSessionId = sessionIdRef.current;
-    const unsubscribe = subscribeToScenario(currentSessionId);
-    startScenario(currentSessionId, scenarioId);
+    const unsubscribe = subscribeToScenario(sessionId);
+    startScenario(sessionId, scenarioId);
     return unsubscribe;
-  }, [scenarioId]);
+  }, [scenarioId, sessionId]);
 
-  const currentEvent = currentStepIndex >= 0 ? events[currentStepIndex] ?? null : null;
+  const currentEvent = currentStepIndex >= 0 ? (events[currentStepIndex] ?? null) : null;
 
   return (
     <div className="scenario-page">
-      <ScenarioControls />
+      <ScenarioControls sessionId={sessionId} />
       {error && <p className="scenario-error">{error}</p>}
       <div className="scenario-main">
         <OsiLayerStack activeLayer={currentEvent?.layer ?? null} />

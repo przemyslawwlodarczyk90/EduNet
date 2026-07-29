@@ -1,0 +1,7 @@
+if (arpCache.contains(targetIp)) {
+    return arpCache.get(targetIp);
+}
+broadcast(new ArpRequest(myIp, myMac, targetIp));
+ArpReply reply = waitForReply();
+arpCache.put(reply.senderIp(), reply.senderMac());
+return reply.senderMac();

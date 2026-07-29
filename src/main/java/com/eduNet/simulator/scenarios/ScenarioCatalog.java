@@ -19,7 +19,15 @@ public class ScenarioCatalog {
             new ScenarioSummary(
                     BuiltinScenarioStateMachineFactory.ENCAPSULATION_DEMO,
                     "Enkapsulacja i dekapsulacja danych",
-                    Set.of(OsiLayer.values()))
+                    Set.of(OsiLayer.values())),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.ARP_RESOLUTION,
+                    "Rozwiązywanie adresu ARP",
+                    Set.of(OsiLayer.DATA_LINK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.SWITCH_LEARNING,
+                    "Uczenie się tablicy MAC switcha",
+                    Set.of(OsiLayer.DATA_LINK))
     );
 
     public List<ScenarioSummary> list(String model, String layer) {

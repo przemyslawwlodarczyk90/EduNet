@@ -11,7 +11,8 @@ public record SimulationEvent(
         Map<String, String> headers,
         String codeLineRef,
         String description,
-        long timestampMs
+        long timestampMs,
+        String macAddress
 ) {
 
     public SimulationEvent {
@@ -20,8 +21,14 @@ public record SimulationEvent(
 
     public static SimulationEvent of(long stepId, String scenarioId, OsiLayer layer, String packetType,
                                       Map<String, String> headers, String codeLineRef, String description) {
+        return of(stepId, scenarioId, layer, packetType, headers, codeLineRef, description, null);
+    }
+
+    public static SimulationEvent of(long stepId, String scenarioId, OsiLayer layer, String packetType,
+                                      Map<String, String> headers, String codeLineRef, String description,
+                                      String macAddress) {
         return new SimulationEvent(stepId, scenarioId, layer, layer.toTcpIpLayer(), packetType, headers,
-                codeLineRef, description, System.currentTimeMillis());
+                codeLineRef, description, System.currentTimeMillis(), macAddress);
     }
 
 }

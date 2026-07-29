@@ -19,6 +19,7 @@ export interface SimulationEvent {
   codeLineRef: string | null;
   description: string;
   timestampMs: number;
+  macAddress: string | null;
 }
 
 export interface ScenarioErrorEvent {
