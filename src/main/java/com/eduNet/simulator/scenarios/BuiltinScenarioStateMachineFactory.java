@@ -5,8 +5,11 @@ import org.springframework.stereotype.Component;
 import com.eduNet.simulator.core.ProtocolStateMachine;
 import com.eduNet.simulator.core.ScenarioStateMachineFactory;
 import com.eduNet.simulator.protocols.AddressingModeDemoStateMachine;
+import com.eduNet.simulator.protocols.ArpSpoofingConceptStateMachine;
 import com.eduNet.simulator.protocols.DhcpDoraStateMachine;
 import com.eduNet.simulator.protocols.DnsResolutionStateMachine;
+import com.eduNet.simulator.protocols.FirewallFilteringStateMachine;
+import com.eduNet.simulator.protocols.FirewallMode;
 import com.eduNet.simulator.protocols.FtpSessionStateMachine;
 import com.eduNet.simulator.protocols.HttpRequestResponseStateMachine;
 import com.eduNet.simulator.protocols.IcmpTracerouteStateMachine;
@@ -20,10 +23,13 @@ import com.eduNet.simulator.protocols.RemoteSessionStateMachine;
 import com.eduNet.simulator.protocols.RoutingSimulationStateMachine;
 import com.eduNet.simulator.protocols.SessionConceptStateMachine;
 import com.eduNet.simulator.protocols.SmtpTransactionStateMachine;
+import com.eduNet.simulator.protocols.SynCookieDefenseStateMachine;
+import com.eduNet.simulator.protocols.SynFloodStateMachine;
 import com.eduNet.simulator.protocols.TcpHandshakeStateMachine;
 import com.eduNet.simulator.protocols.TlsHandshakeSimplifiedStateMachine;
 import com.eduNet.simulator.protocols.TtlDecrementStateMachine;
 import com.eduNet.simulator.protocols.UdpDatagramStateMachine;
+import com.eduNet.simulator.protocols.VpnTunnelStateMachine;
 
 @Component
 public class BuiltinScenarioStateMachineFactory implements ScenarioStateMachineFactory {
@@ -53,6 +59,13 @@ public class BuiltinScenarioStateMachineFactory implements ScenarioStateMachineF
     public static final String SMTP_TRANSACTION = "smtp-transaction";
     public static final String POP3_SESSION = "pop3-session";
     public static final String IMAP_SESSION = "imap-session";
+    public static final String FIREWALL_MODE_FIREWALL = "firewall-mode-firewall";
+    public static final String FIREWALL_MODE_IDS = "firewall-mode-ids";
+    public static final String FIREWALL_MODE_IPS = "firewall-mode-ips";
+    public static final String VPN_TUNNEL = "vpn-tunnel";
+    public static final String SYN_FLOOD = "syn-flood";
+    public static final String SYN_COOKIE_DEFENSE = "syn-cookie-defense";
+    public static final String ARP_SPOOFING_CONCEPT = "arp-spoofing-concept";
 
     @Override
     public ProtocolStateMachine create(String scenarioId) {
@@ -82,6 +95,13 @@ public class BuiltinScenarioStateMachineFactory implements ScenarioStateMachineF
             case SMTP_TRANSACTION -> new SmtpTransactionStateMachine(scenarioId);
             case POP3_SESSION -> new MailSessionStateMachine(scenarioId, MailProtocol.POP3);
             case IMAP_SESSION -> new MailSessionStateMachine(scenarioId, MailProtocol.IMAP);
+            case FIREWALL_MODE_FIREWALL -> new FirewallFilteringStateMachine(scenarioId, FirewallMode.FIREWALL);
+            case FIREWALL_MODE_IDS -> new FirewallFilteringStateMachine(scenarioId, FirewallMode.IDS);
+            case FIREWALL_MODE_IPS -> new FirewallFilteringStateMachine(scenarioId, FirewallMode.IPS);
+            case VPN_TUNNEL -> new VpnTunnelStateMachine(scenarioId);
+            case SYN_FLOOD -> new SynFloodStateMachine(scenarioId);
+            case SYN_COOKIE_DEFENSE -> new SynCookieDefenseStateMachine(scenarioId);
+            case ARP_SPOOFING_CONCEPT -> new ArpSpoofingConceptStateMachine(scenarioId);
             default -> throw new IllegalArgumentException("Nieznany scenariusz: " + scenarioId);
         };
     }

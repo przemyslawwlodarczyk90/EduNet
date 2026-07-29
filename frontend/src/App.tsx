@@ -9,6 +9,7 @@ import { TransportLayerPage } from './transportLayer/TransportLayerPage'
 import { SessionPresentationPage } from './sessionPresentationLayer/SessionPresentationPage'
 import { ApplicationLayerPage } from './applicationLayer/ApplicationLayerPage'
 import { TcpIpModuleHome } from './tcpIpModule/TcpIpModuleHome'
+import { CrossCuttingSecurityPage } from './crossCuttingSecurity/CrossCuttingSecurityPage'
 import './App.css'
 
 type View =
@@ -19,6 +20,7 @@ type View =
   | 'session-presentation-layer'
   | 'application-layer'
   | 'tcpip-module'
+  | 'cross-cutting-security'
   | 'scenarios'
 
 function App() {
@@ -56,6 +58,12 @@ function App() {
         <button className={view === 'tcpip-module' ? 'active' : ''} onClick={() => setView('tcpip-module')}>
           Model TCP/IP (4 warstwy)
         </button>
+        <button
+          className={view === 'cross-cutting-security' ? 'active' : ''}
+          onClick={() => setView('cross-cutting-security')}
+        >
+          Bezpieczeństwo: firewall, VPN, ataki
+        </button>
         <button className={view === 'scenarios' ? 'active' : ''} onClick={() => setView('scenarios')}>
           Scenariusze (demo silnika)
         </button>
@@ -74,6 +82,8 @@ function App() {
       {view === 'application-layer' && <ApplicationLayerPage />}
 
       {view === 'tcpip-module' && <TcpIpModuleHome />}
+
+      {view === 'cross-cutting-security' && <CrossCuttingSecurityPage />}
 
       {view === 'scenarios' && (
         <div className="app-layout">

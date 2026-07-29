@@ -111,7 +111,35 @@ public class ScenarioCatalog {
             new ScenarioSummary(
                     BuiltinScenarioStateMachineFactory.IMAP_SESSION,
                     "IMAP: synchronizacja z serwerem",
-                    Set.of(OsiLayer.APPLICATION))
+                    Set.of(OsiLayer.APPLICATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.FIREWALL_MODE_FIREWALL,
+                    "Firewall: filtrowanie ruchu wg reguł",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.FIREWALL_MODE_IDS,
+                    "IDS: wykrywanie i alarmowanie bez blokady",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.FIREWALL_MODE_IPS,
+                    "IPS: aktywne blokowanie i alarmowanie",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.VPN_TUNNEL,
+                    "VPN: tunelowanie i szyfrowanie pakietu",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.SYN_FLOOD,
+                    "SYN flood: przepełnienie kolejki połączeń półotwartych",
+                    Set.of(OsiLayer.TRANSPORT)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.SYN_COOKIE_DEFENSE,
+                    "Obrona SYN cookies przed SYN flood",
+                    Set.of(OsiLayer.TRANSPORT)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.ARP_SPOOFING_CONCEPT,
+                    "ARP spoofing: podmiana wpisu i man-in-the-middle",
+                    Set.of(OsiLayer.DATA_LINK))
     );
 
     public List<ScenarioSummary> list(String model, String layer) {

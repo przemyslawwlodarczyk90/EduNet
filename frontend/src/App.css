@@ -1068,3 +1068,119 @@
   flex: 1;
   min-width: 280px;
 }
+
+.firewall-alarm-row {
+  background: rgba(231, 76, 60, 0.15);
+}
+
+.firewall-alarm-text {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.arp-spoofed-row {
+  background: rgba(231, 76, 60, 0.15);
+}
+
+.vpn-packet-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid;
+  margin: 12px 0;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 13px;
+}
+
+.vpn-packet-box.plaintext {
+  border-color: #e67e22;
+  background: rgba(230, 126, 34, 0.08);
+}
+
+.vpn-packet-box.encrypted {
+  border-color: #27ae60;
+  background: rgba(39, 174, 96, 0.08);
+}
+
+.vpn-packet-status {
+  font-weight: bold;
+}
+
+.queue-gauge {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 12px 0;
+  max-width: 480px;
+}
+
+.queue-gauge-bar {
+  height: 20px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.queue-gauge-fill {
+  height: 100%;
+  background: #2ecc71;
+  transition: width 0.3s ease;
+}
+
+.queue-gauge-fill.full {
+  background: #e74c3c;
+}
+
+.queue-gauge-label {
+  font-size: 13px;
+}
+
+.queue-success-text {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.phishing-disclaimer {
+  font-style: italic;
+  color: #555;
+}
+
+.phishing-email-preview {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 14px;
+  margin: 12px 0;
+  max-width: 640px;
+}
+
+.phishing-email-preview dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0 0 12px;
+}
+
+.phishing-email-preview dt {
+  font-weight: bold;
+}
+
+.phishing-email-body {
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 0;
+}
+
+.phishing-red-flags {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.phishing-excerpt {
+  font-style: italic;
+}
