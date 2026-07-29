@@ -1,0 +1,3 @@
+InetAddress address = InetAddress.getByName("www.przyklad.com");
+System.out.println("Nazwa hosta: " + address.getHostName());
+System.out.println("Adres IP: " + address.getHostAddress());

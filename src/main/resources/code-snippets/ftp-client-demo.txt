@@ -1,0 +1,10 @@
+FTPClient ftp = new FTPClient();
+ftp.connect("ftp.example.com");
+ftp.login("anonymous", "gosc");
+ftp.enterLocalPassiveMode();
+
+try (OutputStream out = new FileOutputStream("plik.txt")) {
+    ftp.retrieveFile("plik.txt", out);
+}
+ftp.logout();
+ftp.disconnect();

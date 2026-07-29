@@ -1,0 +1,12 @@
+Properties props = new Properties();
+props.put("mail.smtp.host", "smtp.example.com");
+props.put("mail.smtp.port", "25");
+
+Session session = Session.getInstance(props);
+Message message = new MimeMessage(session);
+message.setFrom(new InternetAddress("anna@example.com"));
+message.addRecipient(Message.RecipientType.TO, new InternetAddress("bartek@example.com"));
+message.setSubject("Test");
+message.setText("Treść wiadomości");
+
+Transport.send(message);
