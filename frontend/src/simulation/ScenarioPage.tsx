@@ -6,6 +6,7 @@ import { PacketDetailsPanel } from "./components/PacketDetailsPanel";
 import { CodeViewer } from "./components/CodeViewer";
 import { ScenarioControls } from "./components/ScenarioControls";
 import { OsiToTcpIpMappingView } from "./components/OsiToTcpIpMappingView";
+import { PacketTable } from "./components/PacketTable";
 
 interface ScenarioPageProps {
   scenarioId: string;
@@ -35,6 +36,7 @@ export function ScenarioPage({ scenarioId }: ScenarioPageProps) {
           <CodeViewer scenarioId={scenarioId} codeLineRef={currentEvent?.codeLineRef ?? null} />
         </div>
       </div>
+      <PacketTable sessionId={sessionId} />
       <OsiToTcpIpMappingView />
     </div>
   );

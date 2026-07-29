@@ -1184,3 +1184,31 @@
 .phishing-excerpt {
   font-style: italic;
 }
+
+.packet-table {
+  margin-top: 16px;
+}
+
+.packet-table-filters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.packet-table-grid {
+  font-size: 12px;
+}
+
+.packet-table-grid tbody tr {
+  cursor: pointer;
+}
+
+.packet-table-grid tbody tr:hover {
+  background: rgba(52, 152, 219, 0.12);
+}
+
+.packet-table-row-active {
+  background: rgba(52, 152, 219, 0.28) !important;
+}

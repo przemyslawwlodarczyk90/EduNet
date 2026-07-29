@@ -15,6 +15,7 @@ interface SimulationState {
   addEvent: (sessionId: string, event: SimulationEvent) => void;
   setError: (sessionId: string, message: string) => void;
   removeSession: (sessionId: string) => void;
+  setCurrentStepIndex: (sessionId: string, index: number) => void;
 }
 
 export const useSimulationStore = create<SimulationState>((set) => ({
@@ -56,6 +57,11 @@ export const useSimulationStore = create<SimulationState>((set) => ({
       const rest = { ...state.sessions };
       delete rest[sessionId];
       return { sessions: rest };
+    }),
+  setCurrentStepIndex: (sessionId, index) =>
+    set((state) => {
+      const previous = state.sessions[sessionId] ?? EMPTY_SESSION;
+      return { sessions: { ...state.sessions, [sessionId]: { ...previous, currentStepIndex: index } } };
     }),
 }));
 
