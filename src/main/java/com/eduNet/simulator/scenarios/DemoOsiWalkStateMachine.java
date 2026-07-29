@@ -24,6 +24,7 @@ public class DemoOsiWalkStateMachine implements ProtocolStateMachine {
         if (isFinished()) {
             throw new IllegalStateException("Scenariusz demo-osi-walk jest już zakończony");
         }
+        int currentIndex = index;
         OsiLayer layer = LAYERS.get(index++);
         return SimulationEvent.of(
                 ++stepId,
@@ -31,7 +32,7 @@ public class DemoOsiWalkStateMachine implements ProtocolStateMachine {
                 layer,
                 "DEMO_PACKET",
                 Map.of("layer", layer.name()),
-                null,
+                "DemoOsiWalk.java:" + (currentIndex + 2),
                 "Pakiet dociera do warstwy " + layer);
     }
 

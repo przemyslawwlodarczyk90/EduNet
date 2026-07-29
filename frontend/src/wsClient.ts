@@ -1,7 +1,8 @@
 import { Client, type IMessage } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
+import { API_BASE_URL } from "./config";
 
-const WS_ENDPOINT = "http://localhost:8082/ws";
+const WS_ENDPOINT = `${API_BASE_URL}/ws`;
 
 export type ConnectionState = "disconnected" | "connecting" | "connected";
 

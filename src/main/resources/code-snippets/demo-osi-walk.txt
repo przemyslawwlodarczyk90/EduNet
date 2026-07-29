@@ -1,0 +1,9 @@
+switch (layer) {
+    case PHYSICAL -> handlePhysical(packet);
+    case DATA_LINK -> handleDataLink(packet);
+    case NETWORK -> handleNetwork(packet);
+    case TRANSPORT -> handleTransport(packet);
+    case SESSION -> handleSession(packet);
+    case PRESENTATION -> handlePresentation(packet);
+    case APPLICATION -> handleApplication(packet);
+}

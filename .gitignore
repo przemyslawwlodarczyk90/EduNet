@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Lokalne notatki (nie commitować) ###
+PROGRESS.local.md
