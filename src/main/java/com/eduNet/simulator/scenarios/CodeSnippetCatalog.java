@@ -20,6 +20,12 @@ public class CodeSnippetCatalog {
     public static final String TCP_CLIENT_DEMO = "tcp-client-demo";
     public static final String TCP_SERVER_DEMO = "tcp-server-demo";
     public static final String UDP_CLIENT_DEMO = "udp-client-demo";
+    public static final String SIMPLE_SESSION_SERVER = "simple-session-server";
+    public static final String PLAIN_SOCKET_VS_SSL_SOCKET_DEMO = "plain-socket-vs-ssl-socket-demo";
+    public static final String DNS_LOOKUP_DEMO = "dns-lookup-demo";
+    public static final String HTTP_CLIENT_DEMO = "http-client-demo";
+    public static final String FTP_CLIENT_DEMO = "ftp-client-demo";
+    public static final String SMTP_CLIENT_DEMO = "smtp-client-demo";
 
     private final Map<String, CodeSnippet> snippets = Map.ofEntries(
             Map.entry(BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK,
@@ -54,7 +60,25 @@ public class CodeSnippetCatalog {
                             "code-snippets/tcp-server-demo.txt")),
             Map.entry(UDP_CLIENT_DEMO,
                     loadSnippet(UDP_CLIENT_DEMO, "UdpClientDemo.java", "java",
-                            "code-snippets/udp-client-demo.txt"))
+                            "code-snippets/udp-client-demo.txt")),
+            Map.entry(SIMPLE_SESSION_SERVER,
+                    loadSnippet(SIMPLE_SESSION_SERVER, "SimpleSessionServer.java", "java",
+                            "code-snippets/simple-session-server.txt")),
+            Map.entry(PLAIN_SOCKET_VS_SSL_SOCKET_DEMO,
+                    loadSnippet(PLAIN_SOCKET_VS_SSL_SOCKET_DEMO, "PlainSocketVsSslSocketDemo.java", "java",
+                            "code-snippets/plain-socket-vs-ssl-socket-demo.txt")),
+            Map.entry(DNS_LOOKUP_DEMO,
+                    loadSnippet(DNS_LOOKUP_DEMO, "DnsLookupDemo.java", "java",
+                            "code-snippets/dns-lookup-demo.txt")),
+            Map.entry(HTTP_CLIENT_DEMO,
+                    loadSnippet(HTTP_CLIENT_DEMO, "HttpClientDemo.java", "java",
+                            "code-snippets/http-client-demo.txt")),
+            Map.entry(FTP_CLIENT_DEMO,
+                    loadSnippet(FTP_CLIENT_DEMO, "FtpClientDemo.java", "java",
+                            "code-snippets/ftp-client-demo.txt")),
+            Map.entry(SMTP_CLIENT_DEMO,
+                    loadSnippet(SMTP_CLIENT_DEMO, "SmtpClientDemo.java", "java",
+                            "code-snippets/smtp-client-demo.txt"))
     );
 
     public CodeSnippet find(String scenarioId) {

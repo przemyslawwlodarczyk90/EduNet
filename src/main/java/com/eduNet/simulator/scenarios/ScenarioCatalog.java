@@ -67,7 +67,51 @@ public class ScenarioCatalog {
             new ScenarioSummary(
                     BuiltinScenarioStateMachineFactory.MULTI_PORT_SESSION,
                     "Wiele portów na jednym adresie IP",
-                    Set.of(OsiLayer.TRANSPORT))
+                    Set.of(OsiLayer.TRANSPORT)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.SESSION_CONCEPT,
+                    "Koncepcja sesji: wspólny identyfikator kolejnych żądań",
+                    Set.of(OsiLayer.SESSION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.TLS_HANDSHAKE,
+                    "Uproszczony handshake TLS",
+                    Set.of(OsiLayer.PRESENTATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.TELNET_SESSION,
+                    "Telnet: co widzi podsłuchujący",
+                    Set.of(OsiLayer.PRESENTATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.SSH_SESSION,
+                    "SSH: co widzi podsłuchujący",
+                    Set.of(OsiLayer.PRESENTATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.DNS_RESOLUTION,
+                    "Rozwiązywanie nazwy DNS krok po kroku",
+                    Set.of(OsiLayer.APPLICATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.DHCP_DORA,
+                    "DHCP: Discover, Offer, Request, Acknowledge",
+                    Set.of(OsiLayer.APPLICATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.HTTP_REQUEST_RESPONSE,
+                    "HTTP: żądanie i odpowiedź",
+                    Set.of(OsiLayer.APPLICATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.FTP_SESSION,
+                    "FTP: kanał kontrolny i kanał danych",
+                    Set.of(OsiLayer.APPLICATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.SMTP_TRANSACTION,
+                    "SMTP: wysyłka wiadomości e-mail",
+                    Set.of(OsiLayer.APPLICATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.POP3_SESSION,
+                    "POP3: pobierz i usuń z serwera",
+                    Set.of(OsiLayer.APPLICATION)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.IMAP_SESSION,
+                    "IMAP: synchronizacja z serwerem",
+                    Set.of(OsiLayer.APPLICATION))
     );
 
     public List<ScenarioSummary> list(String model, String layer) {

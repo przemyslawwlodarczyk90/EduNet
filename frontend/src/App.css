@@ -792,3 +792,261 @@
   border-color: #e74c3c;
   color: #fff;
 }
+
+.session-timeline-track {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.session-timeline-entry {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 12px;
+  border-left: 3px solid #2980b9;
+  background: #f4f3ec;
+}
+
+.session-timeline-cookie {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  color: #2980b9;
+}
+
+.session-timeline-action {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.session-timeline-desc {
+  font-size: 13px;
+  color: #555;
+}
+
+.encryption-example {
+  font-style: italic;
+  color: #555;
+}
+
+.plaintext-row .eavesdropper-plaintext {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.encrypted-row .eavesdropper-encrypted {
+  color: #27ae60;
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+.domain-name-parts {
+  font-size: 28px;
+  font-family: ui-monospace, Consolas, monospace;
+  margin-bottom: 16px;
+}
+
+.domain-part {
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.domain-part-sub {
+  background: rgba(41, 128, 185, 0.25);
+  color: #2980b9;
+}
+
+.domain-part-domain {
+  background: rgba(46, 204, 113, 0.25);
+  color: #27ae60;
+}
+
+.domain-part-tld {
+  background: rgba(231, 76, 60, 0.25);
+  color: #c0392b;
+}
+
+.domain-name-legend p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+
+.dns-zone-add-form,
+.dns-zone-query-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.dns-zone-add-form input,
+.dns-zone-query-form input {
+  padding: 4px 8px;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.dora-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.dora-step {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 12px;
+  background: #f4f3ec;
+  border-left: 3px solid #8e44ad;
+}
+
+.dora-phase {
+  font-weight: bold;
+  font-family: ui-monospace, Consolas, monospace;
+  min-width: 80px;
+}
+
+.dora-arrow {
+  color: #555;
+  font-size: 12px;
+  min-width: 140px;
+}
+
+.dora-desc {
+  font-size: 13px;
+}
+
+.http-devtools-panel {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 13px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 12px;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+.http-status-line {
+  color: #4ec9b0;
+}
+
+.http-body-preview {
+  margin-top: 8px;
+  color: #ce9178;
+}
+
+.http-predictor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.http-version-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.http-version-track-label {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.http-version-track-bar {
+  height: 16px;
+  background: #ecf0f1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.http-version-track-fill {
+  height: 100%;
+  background: #2980b9;
+  width: 0%;
+  transition-property: width;
+  transition-timing-function: linear;
+}
+
+.http-version-done {
+  color: #27ae60;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.ftp-channels {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ftp-channel {
+  flex: 1;
+  min-width: 240px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.ftp-channel-data {
+  background: rgba(46, 204, 113, 0.08);
+}
+
+.ftp-channel-line {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.ftp-command {
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.ftp-response {
+  color: #555;
+}
+
+.smtp-log {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px 0;
+}
+
+.smtp-log-line {
+  display: flex;
+  gap: 10px;
+}
+
+.smtp-command {
+  color: #2980b9;
+}
+
+.smtp-response {
+  color: #27ae60;
+}
+
+.concept-topic-view ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.concept-topic-view li {
+  margin-bottom: 4px;
+}

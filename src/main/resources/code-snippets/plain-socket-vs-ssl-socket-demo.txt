@@ -1,0 +1,7 @@
+// Zwykłe, niezaszyfrowane połączenie
+Socket plainSocket = new Socket("serwer.example.com", 80);
+
+// Połączenie szyfrowane TLS — identyczny interfejs, inna implementacja
+SSLSocketFactory sslFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+SSLSocket sslSocket = (SSLSocket) sslFactory.createSocket("serwer.example.com", 443);
+sslSocket.startHandshake();

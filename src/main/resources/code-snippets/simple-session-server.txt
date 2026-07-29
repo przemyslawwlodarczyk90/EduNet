@@ -1,0 +1,10 @@
+Map<String, String> sessions = new HashMap<>();
+
+try (ServerSocket server = new ServerSocket(8080)) {
+    Socket client = server.accept();
+    String sessionId = UUID.randomUUID().toString();
+    sessions.put(sessionId, "zalogowany-uzytkownik");
+
+    OutputStream out = client.getOutputStream();
+    out.write(("Set-Cookie: SESSID=" + sessionId + "\r\n").getBytes());
+}
