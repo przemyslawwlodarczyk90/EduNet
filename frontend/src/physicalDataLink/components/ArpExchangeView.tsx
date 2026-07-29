@@ -36,26 +36,21 @@ export function ArpExchangeView() {
             Cel
           </text>
           {isRequest && (
-            <>
-              <motion.circle
-                cx={150}
-                cy={60}
-                fill="none"
-                stroke="#f1c40f"
-                strokeWidth={2}
-                initial={{ r: 20, opacity: 1 }}
-                animate={{ r: 150, opacity: 0 }}
-                transition={{ repeat: Infinity, duration: 1.4 }}
-              />
-            </>
+            <motion.circle
+              fill="none"
+              stroke="#f1c40f"
+              strokeWidth={2}
+              initial={{ cx: 150, cy: 60, r: 20, opacity: 1 }}
+              animate={{ cx: 150, cy: 60, r: 150, opacity: 0 }}
+              transition={{ repeat: Infinity, duration: 1.4 }}
+            />
           )}
           {isReply && (
             <motion.circle
               r={7}
               fill="#2ecc71"
-              cy={60}
-              initial={{ cx: 260 }}
-              animate={{ cx: 40 }}
+              initial={{ cx: 260, cy: 60 }}
+              animate={{ cx: 40, cy: 60 }}
               transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
             />
           )}

@@ -1,0 +1,5 @@
+NetworkInterface nic = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+for (InterfaceAddress address : nic.getInterfaceAddresses()) {
+    System.out.println("Adres IP: " + address.getAddress());
+    System.out.println("Długość prefiksu: /" + address.getNetworkPrefixLength());
+}

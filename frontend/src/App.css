@@ -517,3 +517,182 @@
   color: #c0392b;
   font-weight: bold;
 }
+
+.subnet-inputs {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.subnet-inputs input[type="text"],
+.subnet-inputs input:not([type]) {
+  padding: 4px 8px;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.cidr-slider-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mask-dotted-display {
+  color: #555;
+  font-size: 13px;
+}
+
+.binary-view {
+  font-family: ui-monospace, Consolas, monospace;
+  margin-bottom: 16px;
+}
+
+.binary-row {
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.binary-row span {
+  width: 18px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.bit-network {
+  color: #2980b9;
+  font-weight: bold;
+}
+
+.bit-host {
+  color: #e67e22;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 14px;
+}
+
+.binary-legend {
+  font-size: 12px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.subnet-results dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+}
+
+.subnet-results dt {
+  font-weight: bold;
+}
+
+.subnet-split-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.subnet-split-cell {
+  border: 1px solid #999;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+  background: #f4f3ec;
+}
+
+.subnet-split-cell-title {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.subnet-split-cell-hosts {
+  font-size: 12px;
+  color: #555;
+}
+
+.mtu-fragmentation-note {
+  color: #d35400;
+  font-weight: bold;
+}
+
+.mtu-diagram {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+
+.mtu-packet-large,
+.mtu-link-small {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #999;
+  background: #ecf0f1;
+  font-size: 13px;
+}
+
+.mtu-fragments {
+  display: flex;
+  gap: 6px;
+}
+
+.mtu-fragment {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #dff0d8;
+  border: 1px solid #2ecc71;
+  font-size: 12px;
+}
+
+.ttl-countdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ttl-tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #999;
+  font-size: 12px;
+}
+
+.ttl-tick-active {
+  background: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+
+.traceroute-destination-row {
+  background: rgba(46, 204, 113, 0.15);
+}
+
+.routing-entry-used {
+  background: rgba(41, 128, 185, 0.15);
+  font-weight: bold;
+}
+
+.addressing-mode-label {
+  font-weight: bold;
+}
+
+.detective-options {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detective-options button {
+  text-align: left;
+  width: 100%;
+}

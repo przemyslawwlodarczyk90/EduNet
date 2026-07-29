@@ -12,11 +12,10 @@ function RepeatSignal() {
         <g key={i}>
           <line x1={100} y1={60} x2={x} y2={y} stroke="#95a5a6" strokeWidth={2} />
           <motion.circle
-            cx={x}
-            cy={y}
             r={6}
             fill="#f1c40f"
-            animate={{ opacity: [0.2, 1, 0.2] }}
+            initial={{ cx: x, cy: y, opacity: 0.2 }}
+            animate={{ cx: x, cy: y, opacity: [0.2, 1, 0.2] }}
             transition={{ ...PULSE, delay: i * 0.1 }}
           />
         </g>
@@ -60,8 +59,8 @@ function Route() {
       <motion.circle
         r={6}
         fill="#f1c40f"
-        cy={50}
-        animate={{ cx: [30, 120, 210] }}
+        initial={{ cx: 30, cy: 50 }}
+        animate={{ cx: [30, 120, 210], cy: 50 }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       />
     </svg>
@@ -94,9 +93,8 @@ function Filter() {
       <rect x={90} y={20} width={20} height={60} fill="#7f8c8d" />
       <motion.circle
         r={7}
-        fill="#f1c40f"
-        cy={50}
-        animate={{ cx: [20, 100, 100, 180], fill: ["#f1c40f", "#f1c40f", "#2ecc71", "#2ecc71"] }}
+        initial={{ cx: 20, cy: 50, fill: "#f1c40f" }}
+        animate={{ cx: [20, 100, 100, 180], cy: 50, fill: ["#f1c40f", "#f1c40f", "#2ecc71", "#2ecc71"] }}
         transition={{ repeat: Infinity, duration: 2.4, times: [0, 0.4, 0.5, 1] }}
       />
     </svg>
@@ -111,8 +109,8 @@ function TranslateNetworks() {
       <rect x={95} y={35} width={30} height={30} rx={6} fill="#f39c12" />
       <motion.circle
         r={6}
-        cy={50}
-        animate={{ cx: [30, 110, 180], fill: ["#2980b9", "#f39c12", "#c0392b"] }}
+        initial={{ cx: 30, cy: 50, fill: "#2980b9" }}
+        animate={{ cx: [30, 110, 180], cy: 50, fill: ["#2980b9", "#f39c12", "#c0392b"] }}
         transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
       />
     </svg>
@@ -130,7 +128,7 @@ function Distribute() {
       <motion.circle
         r={6}
         fill="#f1c40f"
-        cy={50}
+        initial={{ cx: 20, cy: 50 }}
         animate={{
           cx: [20, ...targets.map((t) => t[0] + 10)],
           cy: [50, ...targets.map((t) => t[1])],
@@ -152,8 +150,8 @@ function RelayApplication() {
       <motion.circle
         r={6}
         fill="#f1c40f"
-        cy={40}
-        animate={{ cx: [30, 120, 210, 120, 30] }}
+        initial={{ cx: 30, cy: 40 }}
+        animate={{ cx: [30, 120, 210, 120, 30], cy: 40 }}
         transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
       />
     </svg>

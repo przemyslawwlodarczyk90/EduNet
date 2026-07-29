@@ -14,23 +14,35 @@ import org.springframework.web.server.ResponseStatusException;
 public class CodeSnippetCatalog {
 
     public static final String MAC_ADDRESS_READER = "mac-address-reader";
+    public static final String SUBNET_MATH_DEMO = "subnet-math-demo";
+    public static final String NETWORK_CONFIG_INSPECTOR = "network-config-inspector";
+    public static final String TTL_SIMULATION_DEMO = "ttl-simulation-demo";
 
-    private final Map<String, CodeSnippet> snippets = Map.of(
-            BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK,
-            loadSnippet(BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK, "DemoOsiWalk.java", "java",
-                    "code-snippets/demo-osi-walk.txt"),
-            BuiltinScenarioStateMachineFactory.ENCAPSULATION_DEMO,
-            loadSnippet(BuiltinScenarioStateMachineFactory.ENCAPSULATION_DEMO, "EncapsulationDemo.java", "java",
-                    "code-snippets/encapsulation-demo.txt"),
-            BuiltinScenarioStateMachineFactory.ARP_RESOLUTION,
-            loadSnippet(BuiltinScenarioStateMachineFactory.ARP_RESOLUTION, "ArpResolution.java", "java",
-                    "code-snippets/arp-resolution.txt"),
-            BuiltinScenarioStateMachineFactory.SWITCH_LEARNING,
-            loadSnippet(BuiltinScenarioStateMachineFactory.SWITCH_LEARNING, "SwitchLearning.java", "java",
-                    "code-snippets/switch-learning.txt"),
-            MAC_ADDRESS_READER,
-            loadSnippet(MAC_ADDRESS_READER, "MacAddressReader.java", "java",
-                    "code-snippets/mac-address-reader.txt")
+    private final Map<String, CodeSnippet> snippets = Map.ofEntries(
+            Map.entry(BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK,
+                    loadSnippet(BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK, "DemoOsiWalk.java", "java",
+                            "code-snippets/demo-osi-walk.txt")),
+            Map.entry(BuiltinScenarioStateMachineFactory.ENCAPSULATION_DEMO,
+                    loadSnippet(BuiltinScenarioStateMachineFactory.ENCAPSULATION_DEMO, "EncapsulationDemo.java", "java",
+                            "code-snippets/encapsulation-demo.txt")),
+            Map.entry(BuiltinScenarioStateMachineFactory.ARP_RESOLUTION,
+                    loadSnippet(BuiltinScenarioStateMachineFactory.ARP_RESOLUTION, "ArpResolution.java", "java",
+                            "code-snippets/arp-resolution.txt")),
+            Map.entry(BuiltinScenarioStateMachineFactory.SWITCH_LEARNING,
+                    loadSnippet(BuiltinScenarioStateMachineFactory.SWITCH_LEARNING, "SwitchLearning.java", "java",
+                            "code-snippets/switch-learning.txt")),
+            Map.entry(MAC_ADDRESS_READER,
+                    loadSnippet(MAC_ADDRESS_READER, "MacAddressReader.java", "java",
+                            "code-snippets/mac-address-reader.txt")),
+            Map.entry(SUBNET_MATH_DEMO,
+                    loadSnippet(SUBNET_MATH_DEMO, "SubnetMathDemo.java", "java",
+                            "code-snippets/subnet-math-demo.txt")),
+            Map.entry(NETWORK_CONFIG_INSPECTOR,
+                    loadSnippet(NETWORK_CONFIG_INSPECTOR, "NetworkConfigInspector.java", "java",
+                            "code-snippets/network-config-inspector.txt")),
+            Map.entry(TTL_SIMULATION_DEMO,
+                    loadSnippet(TTL_SIMULATION_DEMO, "TtlSimulationDemo.java", "java",
+                            "code-snippets/ttl-simulation-demo.txt"))
     );
 
     public CodeSnippet find(String scenarioId) {

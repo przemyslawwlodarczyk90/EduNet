@@ -27,10 +27,14 @@ export function CodeViewer({ scenarioId, codeLineRef }: CodeViewerProps) {
       setCode("");
       return;
     }
-    fetchCodeSnippet(scenarioId).then((snippet) => {
-      setCode(snippet.code);
-      setLanguage(snippet.language);
-    });
+    fetchCodeSnippet(scenarioId)
+      .then((snippet) => {
+        setCode(snippet.code);
+        setLanguage(snippet.language);
+      })
+      .catch(() => {
+        setCode("// Brak dostępnego snippetu kodu dla tego scenariusza.");
+      });
   }, [scenarioId]);
 
   useEffect(() => {

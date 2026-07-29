@@ -1,0 +1,8 @@
+int ip = ipToInt("192.168.1.130");
+int mask = cidrToMask(26);
+
+int network = ip & mask;
+int broadcast = network | ~mask;
+
+System.out.println("Adres sieci: " + intToIp(network));
+System.out.println("Adres rozgłoszeniowy: " + intToIp(broadcast));

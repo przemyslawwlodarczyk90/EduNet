@@ -24,6 +24,18 @@ export const useSimulationStore = create<SimulationState>((set) => ({
   addEvent: (sessionId, event) =>
     set((state) => {
       const previous = state.sessions[sessionId] ?? EMPTY_SESSION;
+      // A step with the same stepId can legitimately be re-delivered (e.g. replaying
+      // forward after a rewind, or a duplicate broadcast from a StrictMode double-mount
+      // race) — treat it as "jump to that step" instead of appending a duplicate.
+      const existingIndex = previous.events.findIndex((e) => e.stepId === event.stepId);
+      if (existingIndex !== -1) {
+        return {
+          sessions: {
+            ...state.sessions,
+            [sessionId]: { ...previous, currentStepIndex: existingIndex, error: null },
+          },
+        };
+      }
       const events = [...previous.events, event];
       return {
         sessions: {

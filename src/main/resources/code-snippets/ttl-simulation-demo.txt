@@ -1,0 +1,8 @@
+int ttl = 4;
+while (ttl > 0) {
+    ttl--;
+    System.out.println("Pakiet dotarł do routera, TTL = " + ttl);
+    if (ttl == 0) {
+        System.out.println("TTL osiągnęło 0 — pakiet zostaje odrzucony");
+    }
+}

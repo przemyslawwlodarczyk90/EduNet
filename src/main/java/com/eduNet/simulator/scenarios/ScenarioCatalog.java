@@ -27,7 +27,35 @@ public class ScenarioCatalog {
             new ScenarioSummary(
                     BuiltinScenarioStateMachineFactory.SWITCH_LEARNING,
                     "Uczenie się tablicy MAC switcha",
-                    Set.of(OsiLayer.DATA_LINK))
+                    Set.of(OsiLayer.DATA_LINK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.ROUTING_SIMULATION,
+                    "Routing pakietu przez routery",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.ICMP_TRACEROUTE,
+                    "Traceroute krok po kroku",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.TTL_DECREMENT,
+                    "Wygaśnięcie TTL i odrzucenie pakietu",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.NAT_STATIC,
+                    "NAT statyczny",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.NAT_DYNAMIC,
+                    "NAT dynamiczny",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.NAT_PAT,
+                    "PAT (NAT z przeciążeniem portów)",
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.ADDRESSING_MODES_DEMO,
+                    "Tryby adresowania: unicast/broadcast/multicast/anycast",
+                    Set.of(OsiLayer.NETWORK))
     );
 
     public List<ScenarioSummary> list(String model, String layer) {
