@@ -10,6 +10,7 @@ import { SessionPresentationPage } from './sessionPresentationLayer/SessionPrese
 import { ApplicationLayerPage } from './applicationLayer/ApplicationLayerPage'
 import { TcpIpModuleHome } from './tcpIpModule/TcpIpModuleHome'
 import { CrossCuttingSecurityPage } from './crossCuttingSecurity/CrossCuttingSecurityPage'
+import { NetworkPerformancePage } from './networkPerformance/NetworkPerformancePage'
 import './App.css'
 
 type View =
@@ -21,6 +22,7 @@ type View =
   | 'application-layer'
   | 'tcpip-module'
   | 'cross-cutting-security'
+  | 'network-performance'
   | 'scenarios'
 
 function App() {
@@ -64,6 +66,12 @@ function App() {
         >
           Bezpieczeństwo: firewall, VPN, ataki
         </button>
+        <button
+          className={view === 'network-performance' ? 'active' : ''}
+          onClick={() => setView('network-performance')}
+        >
+          Wydajność sieci i diagnostyka
+        </button>
         <button className={view === 'scenarios' ? 'active' : ''} onClick={() => setView('scenarios')}>
           Scenariusze (demo silnika)
         </button>
@@ -84,6 +92,8 @@ function App() {
       {view === 'tcpip-module' && <TcpIpModuleHome />}
 
       {view === 'cross-cutting-security' && <CrossCuttingSecurityPage />}
+
+      {view === 'network-performance' && <NetworkPerformancePage />}
 
       {view === 'scenarios' && (
         <div className="app-layout">
