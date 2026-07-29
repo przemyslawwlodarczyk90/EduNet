@@ -1,0 +1,20 @@
+switch (direction) {
+    case ENCAPSULATION -> switch (layer) {
+        case APPLICATION -> addHeader(packet, "Dane");
+        case PRESENTATION -> addHeader(packet, "Dane");
+        case SESSION -> addHeader(packet, "Dane");
+        case TRANSPORT -> addHeader(packet, "Segment");
+        case NETWORK -> addHeader(packet, "Pakiet");
+        case DATA_LINK -> addHeader(packet, "Ramka");
+        case PHYSICAL -> addHeader(packet, "Bity");
+    }
+    case DECAPSULATION -> switch (layer) {
+        case PHYSICAL -> removeHeader(packet, "Bity");
+        case DATA_LINK -> removeHeader(packet, "Ramka");
+        case NETWORK -> removeHeader(packet, "Pakiet");
+        case TRANSPORT -> removeHeader(packet, "Segment");
+        case SESSION -> removeHeader(packet, "Dane");
+        case PRESENTATION -> removeHeader(packet, "Dane");
+        case APPLICATION -> removeHeader(packet, "Dane");
+    }
+}

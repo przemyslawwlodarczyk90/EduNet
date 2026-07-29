@@ -14,9 +14,12 @@ import org.springframework.web.server.ResponseStatusException;
 public class CodeSnippetCatalog {
 
     private final Map<String, CodeSnippet> snippets = Map.of(
-            DemoScenarioStateMachineFactory.DEMO_OSI_WALK,
-            loadSnippet(DemoScenarioStateMachineFactory.DEMO_OSI_WALK, "DemoOsiWalk.java", "java",
-                    "code-snippets/demo-osi-walk.txt")
+            BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK,
+            loadSnippet(BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK, "DemoOsiWalk.java", "java",
+                    "code-snippets/demo-osi-walk.txt"),
+            BuiltinScenarioStateMachineFactory.ENCAPSULATION_DEMO,
+            loadSnippet(BuiltinScenarioStateMachineFactory.ENCAPSULATION_DEMO, "EncapsulationDemo.java", "java",
+                    "code-snippets/encapsulation-demo.txt")
     );
 
     public CodeSnippet find(String scenarioId) {

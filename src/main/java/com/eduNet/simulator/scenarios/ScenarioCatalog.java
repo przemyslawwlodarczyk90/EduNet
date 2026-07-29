@@ -13,8 +13,12 @@ public class ScenarioCatalog {
 
     private final List<ScenarioSummary> scenarios = List.of(
             new ScenarioSummary(
-                    DemoScenarioStateMachineFactory.DEMO_OSI_WALK,
+                    BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK,
                     "Demo: wędrówka pakietu przez warstwy OSI",
+                    Set.of(OsiLayer.values())),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.ENCAPSULATION_DEMO,
+                    "Enkapsulacja i dekapsulacja danych",
                     Set.of(OsiLayer.values()))
     );
 

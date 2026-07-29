@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.eduNet.simulator.scenarios.DemoScenarioStateMachineFactory;
+import com.eduNet.simulator.scenarios.BuiltinScenarioStateMachineFactory;
 
 class SimulationEngineTest {
 
@@ -14,12 +14,12 @@ class SimulationEngineTest {
 
     @BeforeEach
     void setUp() {
-        engine = new SimulationEngine(new SimulationSessionRegistry(), new DemoScenarioStateMachineFactory());
+        engine = new SimulationEngine(new SimulationSessionRegistry(), new BuiltinScenarioStateMachineFactory());
     }
 
     @Test
     void startEmitsFirstEventWithCorrectOsiAndTcpIpLayer() {
-        SimulationEvent event = engine.start("session-1", DemoScenarioStateMachineFactory.DEMO_OSI_WALK);
+        SimulationEvent event = engine.start("session-1", BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK);
 
         assertThat(event.stepId()).isEqualTo(1);
         assertThat(event.layer()).isEqualTo(OsiLayer.PHYSICAL);
@@ -28,7 +28,7 @@ class SimulationEngineTest {
 
     @Test
     void stepAdvancesThroughAllSevenOsiLayersInOrder() {
-        engine.start("session-2", DemoScenarioStateMachineFactory.DEMO_OSI_WALK);
+        engine.start("session-2", BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK);
 
         assertThat(engine.step("session-2").layer()).isEqualTo(OsiLayer.DATA_LINK);
         assertThat(engine.step("session-2").layer()).isEqualTo(OsiLayer.NETWORK);
@@ -44,7 +44,7 @@ class SimulationEngineTest {
 
     @Test
     void rewindReturnsToPreviousEventWithoutAdvancingTheStateMachine() {
-        engine.start("session-3", DemoScenarioStateMachineFactory.DEMO_OSI_WALK);
+        engine.start("session-3", BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK);
         engine.step("session-3");
 
         SimulationEvent rewound = engine.rewind("session-3");
@@ -56,7 +56,7 @@ class SimulationEngineTest {
 
     @Test
     void rewindBeyondFirstStepThrows() {
-        engine.start("session-4", DemoScenarioStateMachineFactory.DEMO_OSI_WALK);
+        engine.start("session-4", BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK);
 
         assertThatThrownBy(() -> engine.rewind("session-4"))
                 .isInstanceOf(ScenarioSessionException.class);
@@ -64,7 +64,7 @@ class SimulationEngineTest {
 
     @Test
     void pauseKeepsCurrentEventAndDoesNotAdvance() {
-        engine.start("session-5", DemoScenarioStateMachineFactory.DEMO_OSI_WALK);
+        engine.start("session-5", BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK);
 
         SimulationEvent paused = engine.pause("session-5");
         assertThat(paused.layer()).isEqualTo(OsiLayer.PHYSICAL);
