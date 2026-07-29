@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-interface DetectiveCase {
+export interface DetectiveCase {
   hostA: { ip: string; mask: string };
   hostB: { ip: string; mask: string };
   symptom: string;
@@ -9,7 +9,80 @@ interface DetectiveCase {
   explanation: string;
 }
 
-const CASES: DetectiveCase[] = [
+interface DetectiveCaseModeProps {
+  title: string;
+  hostALabel?: string;
+  hostBLabel?: string;
+  cases: DetectiveCase[];
+}
+
+export function DetectiveCaseMode({ title, hostALabel = "Host A", hostBLabel = "Host B", cases }: DetectiveCaseModeProps) {
+  const [caseIndex, setCaseIndex] = useState(0);
+  const [selected, setSelected] = useState<number | null>(null);
+
+  const detectiveCase = cases[caseIndex];
+
+  const handleAnswer = (index: number) => {
+    if (selected !== null) return;
+    setSelected(index);
+  };
+
+  const next = () => {
+    setSelected(null);
+    setCaseIndex((i) => (i + 1) % cases.length);
+  };
+
+  return (
+    <div className="network-detective-mode">
+      <h4>{title}</h4>
+      <table className="headers-table">
+        <thead>
+          <tr>
+            <th />
+            <th>Adres IP</th>
+            <th>Maska</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{hostALabel}</td>
+            <td>{detectiveCase.hostA.ip}</td>
+            <td>{detectiveCase.hostA.mask}</td>
+          </tr>
+          <tr>
+            <td>{hostBLabel}</td>
+            <td>{detectiveCase.hostB.ip}</td>
+            <td>{detectiveCase.hostB.mask}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Objaw:</strong> {detectiveCase.symptom}
+      </p>
+      <div className="quiz-options detective-options">
+        {detectiveCase.options.map((option, i) => {
+          const isSelected = selected === i;
+          const isCorrect = i === detectiveCase.correctIndex;
+          const className = selected !== null ? (isCorrect ? "correct" : isSelected ? "incorrect" : "") : "";
+          return (
+            <button key={i} className={className} onClick={() => handleAnswer(i)} disabled={selected !== null}>
+              {option}
+            </button>
+          );
+        })}
+      </div>
+      {selected !== null && (
+        <div className="quiz-feedback">
+          <p>{selected === detectiveCase.correctIndex ? "Trafna diagnoza!" : "Niepoprawna diagnoza."}</p>
+          <p>{detectiveCase.explanation}</p>
+          <button onClick={next}>Następny przypadek</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const DEFAULT_CASES: DetectiveCase[] = [
   {
     hostA: { ip: "192.168.1.10", mask: "255.255.255.0" },
     hostB: { ip: "192.168.1.130", mask: "255.255.255.128" },
@@ -40,67 +113,5 @@ const CASES: DetectiveCase[] = [
 ];
 
 export function NetworkDetectiveMode() {
-  const [caseIndex, setCaseIndex] = useState(0);
-  const [selected, setSelected] = useState<number | null>(null);
-
-  const detectiveCase = CASES[caseIndex];
-
-  const handleAnswer = (index: number) => {
-    if (selected !== null) return;
-    setSelected(index);
-  };
-
-  const next = () => {
-    setSelected(null);
-    setCaseIndex((i) => (i + 1) % CASES.length);
-  };
-
-  return (
-    <div className="network-detective-mode">
-      <h4>Tryb detektywa: dlaczego brak komunikacji?</h4>
-      <table className="headers-table">
-        <thead>
-          <tr>
-            <th />
-            <th>Adres IP</th>
-            <th>Maska</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Host A</td>
-            <td>{detectiveCase.hostA.ip}</td>
-            <td>{detectiveCase.hostA.mask}</td>
-          </tr>
-          <tr>
-            <td>Host B</td>
-            <td>{detectiveCase.hostB.ip}</td>
-            <td>{detectiveCase.hostB.mask}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        <strong>Objaw:</strong> {detectiveCase.symptom}
-      </p>
-      <div className="quiz-options detective-options">
-        {detectiveCase.options.map((option, i) => {
-          const isSelected = selected === i;
-          const isCorrect = i === detectiveCase.correctIndex;
-          const className = selected !== null ? (isCorrect ? "correct" : isSelected ? "incorrect" : "") : "";
-          return (
-            <button key={i} className={className} onClick={() => handleAnswer(i)} disabled={selected !== null}>
-              {option}
-            </button>
-          );
-        })}
-      </div>
-      {selected !== null && (
-        <div className="quiz-feedback">
-          <p>{selected === detectiveCase.correctIndex ? "Trafna diagnoza!" : "Niepoprawna diagnoza."}</p>
-          <p>{detectiveCase.explanation}</p>
-          <button onClick={next}>Następny przypadek</button>
-        </div>
-      )}
-    </div>
-  );
+  return <DetectiveCaseMode title="Tryb detektywa: dlaczego brak komunikacji?" cases={DEFAULT_CASES} />;
 }

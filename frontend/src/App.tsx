@@ -8,6 +8,7 @@ import { NetworkLayerPage } from './networkLayer/NetworkLayerPage'
 import { TransportLayerPage } from './transportLayer/TransportLayerPage'
 import { SessionPresentationPage } from './sessionPresentationLayer/SessionPresentationPage'
 import { ApplicationLayerPage } from './applicationLayer/ApplicationLayerPage'
+import { TcpIpModuleHome } from './tcpIpModule/TcpIpModuleHome'
 import './App.css'
 
 type View =
@@ -17,6 +18,7 @@ type View =
   | 'transport-layer'
   | 'session-presentation-layer'
   | 'application-layer'
+  | 'tcpip-module'
   | 'scenarios'
 
 function App() {
@@ -51,6 +53,9 @@ function App() {
         <button className={view === 'application-layer' ? 'active' : ''} onClick={() => setView('application-layer')}>
           Warstwa 7 (Aplikacji)
         </button>
+        <button className={view === 'tcpip-module' ? 'active' : ''} onClick={() => setView('tcpip-module')}>
+          Model TCP/IP (4 warstwy)
+        </button>
         <button className={view === 'scenarios' ? 'active' : ''} onClick={() => setView('scenarios')}>
           Scenariusze (demo silnika)
         </button>
@@ -67,6 +72,8 @@ function App() {
       {view === 'session-presentation-layer' && <SessionPresentationPage />}
 
       {view === 'application-layer' && <ApplicationLayerPage />}
+
+      {view === 'tcpip-module' && <TcpIpModuleHome />}
 
       {view === 'scenarios' && (
         <div className="app-layout">

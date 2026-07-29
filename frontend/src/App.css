@@ -1050,3 +1050,21 @@
 .concept-topic-view li {
   margin-bottom: 4px;
 }
+
+.layer-description {
+  font-style: italic;
+  color: #555;
+  max-width: 720px;
+}
+
+.tcpip-bundle-examples {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.tcpip-bundle-examples > * {
+  flex: 1;
+  min-width: 280px;
+}
