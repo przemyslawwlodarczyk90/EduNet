@@ -1,0 +1,9 @@
+try (ServerSocket serverSocket = new ServerSocket(8080)) {
+    while (true) {
+        Socket client = serverSocket.accept();
+        InputStream in = client.getInputStream();
+        OutputStream out = client.getOutputStream();
+        out.write("HTTP/1.1 200 OK\r\n\r\nCzesc!".getBytes());
+        client.close();
+    }
+}

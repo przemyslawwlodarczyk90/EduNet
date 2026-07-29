@@ -17,6 +17,9 @@ public class CodeSnippetCatalog {
     public static final String SUBNET_MATH_DEMO = "subnet-math-demo";
     public static final String NETWORK_CONFIG_INSPECTOR = "network-config-inspector";
     public static final String TTL_SIMULATION_DEMO = "ttl-simulation-demo";
+    public static final String TCP_CLIENT_DEMO = "tcp-client-demo";
+    public static final String TCP_SERVER_DEMO = "tcp-server-demo";
+    public static final String UDP_CLIENT_DEMO = "udp-client-demo";
 
     private final Map<String, CodeSnippet> snippets = Map.ofEntries(
             Map.entry(BuiltinScenarioStateMachineFactory.DEMO_OSI_WALK,
@@ -42,7 +45,16 @@ public class CodeSnippetCatalog {
                             "code-snippets/network-config-inspector.txt")),
             Map.entry(TTL_SIMULATION_DEMO,
                     loadSnippet(TTL_SIMULATION_DEMO, "TtlSimulationDemo.java", "java",
-                            "code-snippets/ttl-simulation-demo.txt"))
+                            "code-snippets/ttl-simulation-demo.txt")),
+            Map.entry(TCP_CLIENT_DEMO,
+                    loadSnippet(TCP_CLIENT_DEMO, "TcpClientDemo.java", "java",
+                            "code-snippets/tcp-client-demo.txt")),
+            Map.entry(TCP_SERVER_DEMO,
+                    loadSnippet(TCP_SERVER_DEMO, "TcpServerDemo.java", "java",
+                            "code-snippets/tcp-server-demo.txt")),
+            Map.entry(UDP_CLIENT_DEMO,
+                    loadSnippet(UDP_CLIENT_DEMO, "UdpClientDemo.java", "java",
+                            "code-snippets/udp-client-demo.txt"))
     );
 
     public CodeSnippet find(String scenarioId) {

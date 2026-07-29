@@ -55,7 +55,19 @@ public class ScenarioCatalog {
             new ScenarioSummary(
                     BuiltinScenarioStateMachineFactory.ADDRESSING_MODES_DEMO,
                     "Tryby adresowania: unicast/broadcast/multicast/anycast",
-                    Set.of(OsiLayer.NETWORK))
+                    Set.of(OsiLayer.NETWORK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.TCP_HANDSHAKE,
+                    "TCP: trzyetapowe uzgadnianie połączenia",
+                    Set.of(OsiLayer.TRANSPORT)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.UDP_DATAGRAM,
+                    "UDP: transmisja bezpołączeniowa",
+                    Set.of(OsiLayer.TRANSPORT)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.MULTI_PORT_SESSION,
+                    "Wiele portów na jednym adresie IP",
+                    Set.of(OsiLayer.TRANSPORT))
     );
 
     public List<ScenarioSummary> list(String model, String layer) {

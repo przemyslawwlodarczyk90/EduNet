@@ -6,10 +6,13 @@ import com.eduNet.simulator.core.ProtocolStateMachine;
 import com.eduNet.simulator.core.ScenarioStateMachineFactory;
 import com.eduNet.simulator.protocols.AddressingModeDemoStateMachine;
 import com.eduNet.simulator.protocols.IcmpTracerouteStateMachine;
+import com.eduNet.simulator.protocols.MultiPortSessionStateMachine;
 import com.eduNet.simulator.protocols.NatMode;
 import com.eduNet.simulator.protocols.NatTranslationStateMachine;
 import com.eduNet.simulator.protocols.RoutingSimulationStateMachine;
+import com.eduNet.simulator.protocols.TcpHandshakeStateMachine;
 import com.eduNet.simulator.protocols.TtlDecrementStateMachine;
+import com.eduNet.simulator.protocols.UdpDatagramStateMachine;
 
 @Component
 public class BuiltinScenarioStateMachineFactory implements ScenarioStateMachineFactory {
@@ -25,6 +28,9 @@ public class BuiltinScenarioStateMachineFactory implements ScenarioStateMachineF
     public static final String NAT_DYNAMIC = "nat-dynamic";
     public static final String NAT_PAT = "nat-pat";
     public static final String ADDRESSING_MODES_DEMO = "addressing-modes-demo";
+    public static final String TCP_HANDSHAKE = "tcp-handshake";
+    public static final String UDP_DATAGRAM = "udp-datagram";
+    public static final String MULTI_PORT_SESSION = "multi-port-session";
 
     @Override
     public ProtocolStateMachine create(String scenarioId) {
@@ -40,6 +46,9 @@ public class BuiltinScenarioStateMachineFactory implements ScenarioStateMachineF
             case NAT_DYNAMIC -> new NatTranslationStateMachine(scenarioId, NatMode.DYNAMIC);
             case NAT_PAT -> new NatTranslationStateMachine(scenarioId, NatMode.PAT);
             case ADDRESSING_MODES_DEMO -> new AddressingModeDemoStateMachine(scenarioId);
+            case TCP_HANDSHAKE -> new TcpHandshakeStateMachine(scenarioId);
+            case UDP_DATAGRAM -> new UdpDatagramStateMachine(scenarioId);
+            case MULTI_PORT_SESSION -> new MultiPortSessionStateMachine(scenarioId);
             default -> throw new IllegalArgumentException("Nieznany scenariusz: " + scenarioId);
         };
     }

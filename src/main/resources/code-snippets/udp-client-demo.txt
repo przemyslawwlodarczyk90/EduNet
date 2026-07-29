@@ -1,0 +1,10 @@
+try (DatagramSocket socket = new DatagramSocket()) {
+    byte[] data = "ping".getBytes();
+    InetAddress address = InetAddress.getByName("serwer.example.com");
+    DatagramPacket packet = new DatagramPacket(data, data.length, address, 9999);
+    socket.send(packet);
+
+    byte[] buffer = new byte[1024];
+    DatagramPacket response = new DatagramPacket(buffer, buffer.length);
+    socket.receive(response);
+}
