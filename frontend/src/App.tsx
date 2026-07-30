@@ -12,6 +12,7 @@ import { TcpIpModuleHome } from './tcpIpModule/TcpIpModuleHome'
 import { CrossCuttingSecurityPage } from './crossCuttingSecurity/CrossCuttingSecurityPage'
 import { NetworkPerformancePage } from './networkPerformance/NetworkPerformancePage'
 import { CloudNetworksPage } from './cloudNetworks/CloudNetworksPage'
+import { GamificationPage } from './gamification/GamificationPage'
 import './App.css'
 
 type View =
@@ -25,6 +26,7 @@ type View =
   | 'cross-cutting-security'
   | 'network-performance'
   | 'cloud-networks'
+  | 'gamification'
   | 'scenarios'
 
 function App() {
@@ -77,6 +79,9 @@ function App() {
         <button className={view === 'cloud-networks' ? 'active' : ''} onClick={() => setView('cloud-networks')}>
           Sieci w chmurze: CDN i load balancing
         </button>
+        <button className={view === 'gamification' ? 'active' : ''} onClick={() => setView('gamification')}>
+          Gamifikacja: quizy zbiorcze i tryb detektywa
+        </button>
         <button className={view === 'scenarios' ? 'active' : ''} onClick={() => setView('scenarios')}>
           Scenariusze (demo silnika)
         </button>
@@ -101,6 +106,8 @@ function App() {
       {view === 'network-performance' && <NetworkPerformancePage />}
 
       {view === 'cloud-networks' && <CloudNetworksPage />}
+
+      {view === 'gamification' && <GamificationPage onNavigate={(navView) => setView(navView as View)} />}
 
       {view === 'scenarios' && (
         <div className="app-layout">
