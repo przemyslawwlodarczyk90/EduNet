@@ -6,6 +6,7 @@ import com.eduNet.simulator.core.ProtocolStateMachine;
 import com.eduNet.simulator.core.ScenarioStateMachineFactory;
 import com.eduNet.simulator.protocols.AddressingModeDemoStateMachine;
 import com.eduNet.simulator.protocols.ArpSpoofingConceptStateMachine;
+import com.eduNet.simulator.protocols.CdnRequestRoutingStateMachine;
 import com.eduNet.simulator.protocols.DhcpDoraStateMachine;
 import com.eduNet.simulator.protocols.DnsResolutionStateMachine;
 import com.eduNet.simulator.protocols.FirewallFilteringStateMachine;
@@ -66,6 +67,7 @@ public class BuiltinScenarioStateMachineFactory implements ScenarioStateMachineF
     public static final String SYN_FLOOD = "syn-flood";
     public static final String SYN_COOKIE_DEFENSE = "syn-cookie-defense";
     public static final String ARP_SPOOFING_CONCEPT = "arp-spoofing-concept";
+    public static final String CDN_REQUEST_ROUTING = "cdn-request-routing";
 
     @Override
     public ProtocolStateMachine create(String scenarioId) {
@@ -102,6 +104,7 @@ public class BuiltinScenarioStateMachineFactory implements ScenarioStateMachineF
             case SYN_FLOOD -> new SynFloodStateMachine(scenarioId);
             case SYN_COOKIE_DEFENSE -> new SynCookieDefenseStateMachine(scenarioId);
             case ARP_SPOOFING_CONCEPT -> new ArpSpoofingConceptStateMachine(scenarioId);
+            case CDN_REQUEST_ROUTING -> new CdnRequestRoutingStateMachine(scenarioId);
             default -> throw new IllegalArgumentException("Nieznany scenariusz: " + scenarioId);
         };
     }

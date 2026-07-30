@@ -1345,3 +1345,96 @@
   padding: 4px 8px;
   cursor: pointer;
 }
+
+.cdn-world-map {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 2 / 1;
+  background: #eaf2f8;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.cdn-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cdn-node-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3498db;
+  border: 2px solid #2c3e50;
+}
+
+.cdn-node.active .cdn-node-dot {
+  background: #e74c3c;
+  width: 18px;
+  height: 18px;
+  box-shadow: 0 0 0 6px rgba(231, 76, 60, 0.25);
+}
+
+.cdn-node-label {
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.cdn-current-description {
+  margin-top: 8px;
+}
+
+.load-balancer-diagram {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.lb-entry-point {
+  background: #2c3e50;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.lb-servers {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.lb-server {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  border: 2px solid #2ecc71;
+  border-radius: 8px;
+  padding: 10px 14px;
+  min-width: 120px;
+}
+
+.lb-server.down {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.lb-server-label {
+  font-weight: bold;
+}
+
+.lb-server-count {
+  font-size: 13px;
+}

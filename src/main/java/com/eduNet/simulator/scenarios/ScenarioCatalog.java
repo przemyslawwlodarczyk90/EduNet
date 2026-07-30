@@ -139,7 +139,11 @@ public class ScenarioCatalog {
             new ScenarioSummary(
                     BuiltinScenarioStateMachineFactory.ARP_SPOOFING_CONCEPT,
                     "ARP spoofing: podmiana wpisu i man-in-the-middle",
-                    Set.of(OsiLayer.DATA_LINK))
+                    Set.of(OsiLayer.DATA_LINK)),
+            new ScenarioSummary(
+                    BuiltinScenarioStateMachineFactory.CDN_REQUEST_ROUTING,
+                    "CDN: różni użytkownicy trafiają do różnych, najbliższych węzłów",
+                    Set.of(OsiLayer.APPLICATION))
     );
 
     public List<ScenarioSummary> list(String model, String layer) {
