@@ -13,6 +13,7 @@ import { CrossCuttingSecurityPage } from './crossCuttingSecurity/CrossCuttingSec
 import { NetworkPerformancePage } from './networkPerformance/NetworkPerformancePage'
 import { CloudNetworksPage } from './cloudNetworks/CloudNetworksPage'
 import { GamificationPage } from './gamification/GamificationPage'
+import { RealSocketLabPage } from './realSocketLab/RealSocketLabPage'
 import './App.css'
 
 type View =
@@ -27,6 +28,7 @@ type View =
   | 'network-performance'
   | 'cloud-networks'
   | 'gamification'
+  | 'real-socket-lab'
   | 'scenarios'
 
 function App() {
@@ -82,6 +84,9 @@ function App() {
         <button className={view === 'gamification' ? 'active' : ''} onClick={() => setView('gamification')}>
           Gamifikacja: quizy zbiorcze i tryb detektywa
         </button>
+        <button className={view === 'real-socket-lab' ? 'active' : ''} onClick={() => setView('real-socket-lab')}>
+          Real-socket-lab (opcjonalnie)
+        </button>
         <button className={view === 'scenarios' ? 'active' : ''} onClick={() => setView('scenarios')}>
           Scenariusze (demo silnika)
         </button>
@@ -108,6 +113,8 @@ function App() {
       {view === 'cloud-networks' && <CloudNetworksPage />}
 
       {view === 'gamification' && <GamificationPage onNavigate={(navView) => setView(navView as View)} />}
+
+      {view === 'real-socket-lab' && <RealSocketLabPage />}
 
       {view === 'scenarios' && (
         <div className="app-layout">

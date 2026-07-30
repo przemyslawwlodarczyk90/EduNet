@@ -34,3 +34,7 @@ build/
 
 ### Lokalne notatki (nie commitować) ###
 PROGRESS.local.md
+
+### Logi dev-serwerów uruchamianych lokalnie w tle ###
+backend-dev.log
+frontend-dev.log

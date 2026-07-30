@@ -1509,3 +1509,40 @@
 .detective-case-title {
   font-weight: bold;
 }
+
+.lab-protocol-picker {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.lab-protocol-picker button.active {
+  background: #2c3e50;
+  color: #fff;
+}
+
+.lab-session-bar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.lab-session-hint {
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.lab-terminal {
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  background: #000;
+  border-radius: 6px;
+  padding: 8px;
+}
