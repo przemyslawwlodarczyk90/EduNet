@@ -10,6 +10,12 @@ import { DuplexMatchQuiz } from "./components/DuplexMatchQuiz";
 export function TransportLayerPage() {
   return (
     <div className="fundamentals-page">
+      <section className="layer-model-badge">
+        <p>
+          <strong>Model ISO/OSI — warstwa 4 (transportowa).</strong> Odpowiada za dostarczanie danych między
+          aplikacjami (porty, TCP/UDP) — patrz też sekcja "OSI a TCP/IP" w module Fundamenty.
+        </p>
+      </section>
       <section>
         <h2>TCP: trzyetapowe uzgadnianie połączenia</h2>
         <TcpHandshakeAnimation />

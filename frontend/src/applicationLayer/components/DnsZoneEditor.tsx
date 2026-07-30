@@ -46,7 +46,7 @@ export function DnsZoneEditor() {
             <th>Nazwa</th>
             <th>Typ</th>
             <th>Wartość</th>
-            <th />
+            <th>Akcje</th>
           </tr>
         </thead>
         <tbody>
@@ -65,7 +65,7 @@ export function DnsZoneEditor() {
 
       <div className="dns-zone-add-form">
         <input placeholder="nazwa (np. sub.przyklad.com)" value={newName} onChange={(e) => setNewName(e.target.value)} />
-        <select value={newType} onChange={(e) => setNewType(e.target.value as DnsRecordType)}>
+        <select aria-label="Typ nowego rekordu" value={newType} onChange={(e) => setNewType(e.target.value as DnsRecordType)}>
           {RECORD_TYPES.map((type) => (
             <option key={type} value={type}>
               {type}
@@ -78,8 +78,8 @@ export function DnsZoneEditor() {
 
       <div className="dns-zone-query-form">
         <h4>Wypróbuj zapytanie</h4>
-        <input value={queryName} onChange={(e) => setQueryName(e.target.value)} />
-        <select value={queryType} onChange={(e) => setQueryType(e.target.value as DnsRecordType)}>
+        <input aria-label="Nazwa domeny do zapytania" value={queryName} onChange={(e) => setQueryName(e.target.value)} />
+        <select aria-label="Typ rekordu do zapytania" value={queryType} onChange={(e) => setQueryType(e.target.value as DnsRecordType)}>
           {RECORD_TYPES.map((type) => (
             <option key={type} value={type}>
               {type}

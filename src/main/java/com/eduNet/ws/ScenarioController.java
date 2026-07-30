@@ -1,5 +1,7 @@
 package com.eduNet.ws;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -12,6 +14,8 @@ import com.eduNet.simulator.core.SimulationEvent;
 
 @Controller
 public class ScenarioController {
+
+    private static final Logger log = LoggerFactory.getLogger(ScenarioController.class);
 
     private final SimulationEngine engine;
     private final SimpMessagingTemplate messagingTemplate;
@@ -43,6 +47,7 @@ public class ScenarioController {
 
     @MessageExceptionHandler(ScenarioSessionException.class)
     public void handleScenarioSessionException(ScenarioSessionException ex) {
+        log.warn("scenario error session={} message={}", ex.getSessionId(), ex.getMessage());
         messagingTemplate.convertAndSend(
                 "/topic/scenario/" + ex.getSessionId() + "/errors",
                 new ScenarioErrorEvent(ex.getSessionId(), ex.getMessage()));

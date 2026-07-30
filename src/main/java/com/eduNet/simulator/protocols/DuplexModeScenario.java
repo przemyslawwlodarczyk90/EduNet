@@ -15,7 +15,11 @@ public class DuplexModeScenario {
             new DuplexMode("walkie-talkie", "Krótkofalówka (walkie-talkie)", "HALF",
                     "Naciśnięcie przycisku nadawania blokuje możliwość jednoczesnego słuchania."),
             new DuplexMode("phone-call", "Rozmowa telefoniczna", "FULL",
-                    "Obie strony mogą mówić i słuchać jednocześnie.")
+                    "Obie strony mogą mówić i słuchać jednocześnie."),
+            new DuplexMode("videocall", "Rozmowa wideo (komunikator internetowy)", "FULL",
+                    "Obraz i dźwięk płyną jednocześnie w obie strony przez cały czas trwania połączenia."),
+            new DuplexMode("cb-radio", "Radio CB / krótkofalarskie (jeden kanał)", "HALF",
+                    "Tylko jedna strona może nadawać w danej chwili — druga musi czekać na zwolnienie kanału.")
     );
 
     public List<DuplexMode> list() {

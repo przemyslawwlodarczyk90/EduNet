@@ -8,6 +8,13 @@ import { EncryptionTypeMatchQuiz } from "./components/EncryptionTypeMatchQuiz";
 export function SessionPresentationPage() {
   return (
     <div className="fundamentals-page">
+      <section className="layer-model-badge">
+        <p>
+          <strong>Model ISO/OSI — warstwa 5 (sesji) i warstwa 6 (prezentacji).</strong> W praktycznym modelu TCP/IP
+          te dwie warstwy razem z warstwą aplikacji tworzą jedną wspólną warstwę aplikacji (patrz też sekcja
+          "OSI a TCP/IP" w module Fundamenty).
+        </p>
+      </section>
       <section>
         <h2>Warstwa 5 — Sesji: wspólny identyfikator kolejnych żądań</h2>
         <SessionTimelineView />

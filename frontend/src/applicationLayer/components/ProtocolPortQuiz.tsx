@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchProtocolPorts } from "../api";
 import type { ProtocolPort } from "../types";
+import { log } from "../../lib/logger";
 
 interface Question {
   protocol: ProtocolPort;
@@ -35,6 +36,7 @@ export function ProtocolPortQuiz() {
 
   const handleAnswer = (port: number) => {
     if (selected !== null) return;
+    log("quiz", `ProtocolPortQuiz: ${port === question.protocol.port ? "poprawna" : "błędna"} odpowiedź (${port})`);
     setSelected(port);
     setScore((s) => ({ correct: s.correct + (port === question.protocol.port ? 1 : 0), total: s.total + 1 }));
   };

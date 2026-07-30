@@ -3,7 +3,12 @@ package com.eduNet.simulator.gamification;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public final class QuizScorer {
+
+    private static final Logger log = LoggerFactory.getLogger(QuizScorer.class);
 
     private QuizScorer() {
     }
@@ -25,6 +30,7 @@ public final class QuizScorer {
             }
         }
 
+        log.info("quiz scored id={} correct={}/{}", quiz.id(), correct, questions.size());
         return new QuizResult(quiz.id(), correct, questions.size(), correctness, explanations);
     }
 

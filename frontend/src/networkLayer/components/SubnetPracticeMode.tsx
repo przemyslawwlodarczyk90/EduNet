@@ -83,6 +83,7 @@ export function SubnetPracticeMode() {
                 <td>{field.label}</td>
                 <td>
                   <input
+                    aria-label={field.label}
                     value={answers[field.key]}
                     onChange={(e) => setAnswers((prev) => ({ ...prev, [field.key]: e.target.value }))}
                     className={result ? (ok ? "correct-input" : "incorrect-input") : ""}

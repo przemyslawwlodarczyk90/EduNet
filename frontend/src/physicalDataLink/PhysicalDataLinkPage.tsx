@@ -12,6 +12,12 @@ import { BuildArpTableExercise } from "./components/BuildArpTableExercise";
 export function PhysicalDataLinkPage() {
   return (
     <div className="fundamentals-page">
+      <section className="layer-model-badge">
+        <p>
+          <strong>Model ISO/OSI — warstwa 1 (fizyczna) i warstwa 2 (łącza danych).</strong> To dwie najniższe z
+          siedmiu warstw referencyjnego modelu OSI (patrz też sekcja "OSI a TCP/IP" w module Fundamenty).
+        </p>
+      </section>
       <section>
         <h2>Warstwa 1 — Fizyczna: topologie sieci</h2>
         <TopologyDiagram />

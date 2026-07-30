@@ -5,9 +5,6 @@ import { DnsRecordMatchQuiz } from "./components/DnsRecordMatchQuiz";
 import { DhcpDoraView } from "./components/DhcpDoraView";
 import { DhcpOrderQuiz } from "./components/DhcpOrderQuiz";
 import { HttpExchangeView } from "./components/HttpExchangeView";
-import { HttpVersionComparisonView } from "./components/HttpVersionComparisonView";
-import { HttpEvolutionTimeline } from "./components/HttpEvolutionTimeline";
-import { HttpVersionMatchQuiz } from "./components/HttpVersionMatchQuiz";
 import { DualChannelView } from "./components/DualChannelView";
 import { SmtpTransactionView } from "./components/SmtpTransactionView";
 import { MailProtocolComparisonView } from "./components/MailProtocolComparisonView";
@@ -18,6 +15,13 @@ import { EncryptionComparisonView } from "../sessionPresentationLayer/components
 export function ApplicationLayerPage() {
   return (
     <div className="fundamentals-page">
+      <section className="layer-model-badge">
+        <p>
+          <strong>Model ISO/OSI — warstwa 7 (aplikacji).</strong> Najwyższa warstwa modelu OSI — protokoły, z
+          którymi bezpośrednio "rozmawiają" aplikacje użytkownika (patrz też sekcja "OSI a TCP/IP" w module
+          Fundamenty).
+        </p>
+      </section>
       <section>
         <h2>DNS: anatomia nazwy domeny</h2>
         <DomainNameAnatomyView />
@@ -40,17 +44,11 @@ export function ApplicationLayerPage() {
 
       <section>
         <h2>HTTP: żądanie i odpowiedź</h2>
+        <p>
+          Historia rozwoju samego protokołu HTTP (wersje 0.9-3, SPDY, QUIC) i osobny quiz na ten temat znajdziesz w
+          module "HTTP: ewolucja protokołu" w głównym menu.
+        </p>
         <HttpExchangeView />
-      </section>
-
-      <section>
-        <h2>Wszystkie wersje HTTP — porównanie</h2>
-        <HttpVersionComparisonView />
-      </section>
-
-      <section>
-        <h2>Ewolucja HTTP</h2>
-        <HttpEvolutionTimeline />
       </section>
 
       <section>
@@ -99,7 +97,6 @@ export function ApplicationLayerPage() {
       </section>
 
       <section className="quizzes">
-        <HttpVersionMatchQuiz />
         <ProtocolPortQuiz />
       </section>
     </div>

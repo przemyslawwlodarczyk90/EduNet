@@ -28,7 +28,7 @@ export function Ipv4VsIpv6View() {
       <table className="headers-table">
         <thead>
           <tr>
-            <th />
+            <th>Cecha</th>
             <th>IPv4</th>
             <th>IPv6</th>
           </tr>

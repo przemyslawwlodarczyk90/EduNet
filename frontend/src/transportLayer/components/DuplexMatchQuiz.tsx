@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchDuplexModes } from "../api";
 import type { DuplexMode } from "../types";
+import { log } from "../../lib/logger";
 
 interface Question {
   mode: DuplexMode;
@@ -30,6 +31,7 @@ export function DuplexMatchQuiz() {
 
   const handleAnswer = (index: number) => {
     if (selected !== null) return;
+    log("quiz", `DuplexMatchQuiz: ${index === question.correctIndex ? "poprawna" : "błędna"} odpowiedź`);
     setSelected(index);
     setScore((s) => ({ correct: s.correct + (index === question.correctIndex ? 1 : 0), total: s.total + 1 }));
   };

@@ -13,7 +13,10 @@ public class EncryptionModelScenario {
                     "AES"),
             new EncryptionType("asymmetric", "Szyfrowanie asymetryczne", "para kluczy: publiczny i prywatny",
                     "Klucz publiczny (jawny) szyfruje dane, a odszyfrować je może tylko właściciel powiązanego klucza prywatnego.",
-                    "RSA")
+                    "RSA"),
+            new EncryptionType("hybrid", "Szyfrowanie hybrydowe", "para kluczy do wymiany + jeden wspólny klucz do danych",
+                    "Asymetrycznie (np. RSA lub ECDHE) bezpiecznie wymieniany jest jednorazowy klucz symetryczny, którym potem szyfrowana jest właściwa transmisja — łączy bezpieczeństwo asymetrii z szybkością symetrii.",
+                    "TLS/HTTPS")
     );
 
     public List<EncryptionType> list() {

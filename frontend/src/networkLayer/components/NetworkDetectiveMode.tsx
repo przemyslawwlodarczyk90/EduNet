@@ -38,7 +38,7 @@ export function DetectiveCaseMode({ title, hostALabel = "Host A", hostBLabel = "
       <table className="headers-table">
         <thead>
           <tr>
-            <th />
+            <th>Host</th>
             <th>Adres IP</th>
             <th>Maska</th>
           </tr>

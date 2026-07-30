@@ -11,10 +11,10 @@ class NetworkTypeCatalogTest {
     private final NetworkTypeCatalog catalog = new NetworkTypeCatalog();
 
     @Test
-    void listsAllFiveNetworkTypes() {
+    void listsAllSixNetworkTypes() {
         assertThat(catalog.list())
                 .extracting(NetworkType::id)
-                .containsExactly("PAN", "LAN", "WLAN", "MAN", "WAN");
+                .containsExactly("PAN", "LAN", "WLAN", "CAN", "MAN", "WAN");
     }
 
     @Test

@@ -1,11 +1,32 @@
 import { useState } from "react";
 
-const CORRECT_ORDER = ["SYN", "SYN-ACK", "ACK"];
-const LABELS: Record<string, string> = {
-  "SYN": "Klient → Serwer: SYN",
-  "SYN-ACK": "Serwer → Klient: SYN-ACK",
-  "ACK": "Klient → Serwer: ACK",
-};
+interface Challenge {
+  title: string;
+  order: string[];
+  labels: Record<string, string>;
+}
+
+const CHALLENGES: Challenge[] = [
+  {
+    title: "Quiz: ułóż kolejność handshake'u TCP (przeciągnij elementy)",
+    order: ["SYN", "SYN-ACK", "ACK"],
+    labels: {
+      SYN: "Klient → Serwer: SYN",
+      "SYN-ACK": "Serwer → Klient: SYN-ACK",
+      ACK: "Klient → Serwer: ACK",
+    },
+  },
+  {
+    title: "Quiz: ułóż kolejność zamykania połączenia TCP (przeciągnij elementy)",
+    order: ["FIN-1", "ACK-1", "FIN-2", "ACK-2"],
+    labels: {
+      "FIN-1": "Klient → Serwer: FIN (klient kończy wysyłanie)",
+      "ACK-1": "Serwer → Klient: ACK (potwierdzenie FIN klienta)",
+      "FIN-2": "Serwer → Klient: FIN (serwer też kończy wysyłanie)",
+      "ACK-2": "Klient → Serwer: ACK (potwierdzenie FIN serwera, połączenie zamknięte)",
+    },
+  },
+];
 
 function shuffle<T>(items: T[]): T[] {
   const copy = [...items];
@@ -16,8 +37,14 @@ function shuffle<T>(items: T[]): T[] {
   return copy;
 }
 
+function pickChallengeIndex(): number {
+  return Math.floor(Math.random() * CHALLENGES.length);
+}
+
 export function HandshakeOrderQuiz() {
-  const [items, setItems] = useState<string[]>(() => shuffle(CORRECT_ORDER));
+  const [challengeIndex, setChallengeIndex] = useState(pickChallengeIndex);
+  const challenge = CHALLENGES[challengeIndex];
+  const [items, setItems] = useState<string[]>(() => shuffle(challenge.order));
   const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [checked, setChecked] = useState(false);
 
@@ -33,11 +60,18 @@ export function HandshakeOrderQuiz() {
     setChecked(false);
   };
 
-  const isCorrect = items.every((item, i) => item === CORRECT_ORDER[i]);
+  const isCorrect = items.every((item, i) => item === challenge.order[i]);
+
+  const nextChallenge = () => {
+    const nextIndex = pickChallengeIndex();
+    setChallengeIndex(nextIndex);
+    setItems(shuffle(CHALLENGES[nextIndex].order));
+    setChecked(false);
+  };
 
   return (
     <div className="quiz">
-      <h4>Quiz: ułóż kolejność handshake'u TCP (przeciągnij elementy)</h4>
+      <h4>{challenge.title}</h4>
       <ul className="drag-order-list">
         {items.map((item, i) => (
           <li
@@ -46,9 +80,9 @@ export function HandshakeOrderQuiz() {
             onDragStart={() => setDragIndex(i)}
             onDragOver={(e) => e.preventDefault()}
             onDrop={() => handleDrop(i)}
-            className={checked ? (item === CORRECT_ORDER[i] ? "correct" : "incorrect") : ""}
+            className={checked ? (item === challenge.order[i] ? "correct" : "incorrect") : ""}
           >
-            {i + 1}. {LABELS[item]}
+            {i + 1}. {challenge.labels[item]}
           </li>
         ))}
       </ul>
@@ -56,12 +90,13 @@ export function HandshakeOrderQuiz() {
         <button onClick={() => setChecked(true)}>Sprawdź</button>
         <button
           onClick={() => {
-            setItems(shuffle(CORRECT_ORDER));
+            setItems(shuffle(challenge.order));
             setChecked(false);
           }}
         >
           Przetasuj
         </button>
+        <button onClick={nextChallenge}>Inne zadanie</button>
       </div>
       {checked && (
         <p className={isCorrect ? "quiz-feedback-correct" : "quiz-feedback-incorrect"}>

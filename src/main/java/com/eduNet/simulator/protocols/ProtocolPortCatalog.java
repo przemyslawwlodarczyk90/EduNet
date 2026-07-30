@@ -19,7 +19,15 @@ public class ProtocolPortCatalog {
             new ProtocolPort("SSH", 22, "TCP"),
             new ProtocolPort("Telnet", 23, "TCP"),
             new ProtocolPort("SNMP", 161, "UDP"),
-            new ProtocolPort("NTP", 123, "UDP")
+            new ProtocolPort("NTP", 123, "UDP"),
+            new ProtocolPort("LDAP", 389, "TCP"),
+            new ProtocolPort("SMB", 445, "TCP"),
+            new ProtocolPort("RDP", 3389, "TCP"),
+            new ProtocolPort("Syslog", 514, "UDP"),
+            new ProtocolPort("TFTP", 69, "UDP"),
+            new ProtocolPort("IMAPS", 993, "TCP"),
+            new ProtocolPort("POP3S", 995, "TCP"),
+            new ProtocolPort("SIP", 5060, "UDP/TCP")
     );
 
     public List<ProtocolPort> list() {

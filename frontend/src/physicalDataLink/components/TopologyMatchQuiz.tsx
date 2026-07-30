@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchTopologies } from "../api";
 import type { NetworkTopology } from "../types";
+import { log } from "../../lib/logger";
 
 interface Question {
   topology: NetworkTopology;
@@ -34,6 +35,7 @@ export function TopologyMatchQuiz() {
 
   const handleAnswer = (id: string) => {
     if (selectedId) return;
+    log("quiz", `TopologyMatchQuiz: ${id === question.topology.id ? "poprawna" : "błędna"} odpowiedź (${id})`);
     setSelectedId(id);
     setScore((s) => ({ correct: s.correct + (id === question.topology.id ? 1 : 0), total: s.total + 1 }));
   };

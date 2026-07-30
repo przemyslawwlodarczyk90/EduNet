@@ -75,6 +75,39 @@ public class TopologyCatalog {
                     "Awaria jednego połączenia lub urządzenia prawie nie wpływa na resztę sieci — istnieją inne trasy."
             ),
             new NetworkTopology(
+                    "partial-mesh", "Częściowa siatka",
+                    "Tylko część urządzeń ma bezpośrednie połączenia ze sobą — pozostałe komunikują się przez pośredników.",
+                    List.of(
+                            new TopologyNode("a", 0.5, 0.1), new TopologyNode("b", 0.9, 0.4),
+                            new TopologyNode("c", 0.7, 0.85), new TopologyNode("d", 0.3, 0.85),
+                            new TopologyNode("e", 0.1, 0.4)
+                    ),
+                    List.of(
+                            new TopologyLink("a", "b"), new TopologyLink("a", "e"),
+                            new TopologyLink("b", "c"), new TopologyLink("c", "d"),
+                            new TopologyLink("d", "e"), new TopologyLink("b", "e")
+                    ),
+                    "Sygnał czasem idzie bezpośrednio do celu, a czasem przez dodatkowe urządzenie pośredniczące — zależnie od tego, które połączenia istnieją.",
+                    "Awaria jednego łącza zwykle nie odcina urządzenia całkowicie — często istnieje alternatywna droga, choć nie tyle, ile w pełnej siatce."
+            ),
+            new NetworkTopology(
+                    "tree", "Drzewiasta (hierarchiczna)",
+                    "Rozszerzona gwiazda — grupy urządzeń łączą się w lokalne węzły, a te z kolei do wspólnego węzła nadrzędnego (typowe dla firmowej sieci szkieletowej).",
+                    List.of(
+                            new TopologyNode("root", 0.5, 0.1),
+                            new TopologyNode("subA", 0.25, 0.5), new TopologyNode("subB", 0.75, 0.5),
+                            new TopologyNode("leafA1", 0.1, 0.9), new TopologyNode("leafA2", 0.35, 0.9),
+                            new TopologyNode("leafB1", 0.65, 0.9), new TopologyNode("leafB2", 0.9, 0.9)
+                    ),
+                    List.of(
+                            new TopologyLink("root", "subA"), new TopologyLink("root", "subB"),
+                            new TopologyLink("subA", "leafA1"), new TopologyLink("subA", "leafA2"),
+                            new TopologyLink("subB", "leafB1"), new TopologyLink("subB", "leafB2")
+                    ),
+                    "Sygnał wędruje w górę do najbliższego węzła nadrzędnego, a w razie potrzeby dalej w górę hierarchii, zanim zejdzie w dół do gałęzi docelowej.",
+                    "Awaria węzła nadrzędnego odcina całą podległą mu gałąź, ale nie wpływa na pozostałe gałęzie drzewa."
+            ),
+            new NetworkTopology(
                     "hybrid", "Hybrydowa",
                     "Połączenie kilku topologii — tu dwie gwiazdy połączone jednym łączem między centralnymi punktami.",
                     List.of(

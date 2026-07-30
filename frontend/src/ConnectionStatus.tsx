@@ -50,7 +50,7 @@ export function ConnectionStatus() {
         }}
       />
       <span>{LABELS[state]}</span>
-      {lastPong && <span style={{ color: "#888" }}>— {lastPong}</span>}
+      {lastPong && <span style={{ color: "#666" }}>— {lastPong}</span>}
     </div>
   );
 }

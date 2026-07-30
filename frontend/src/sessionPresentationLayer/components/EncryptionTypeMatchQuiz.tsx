@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchEncryptionTypes } from "../api";
 import type { EncryptionType } from "../types";
+import { log } from "../../lib/logger";
 
 interface Question {
   type: EncryptionType;
@@ -31,6 +32,7 @@ export function EncryptionTypeMatchQuiz() {
 
   const handleAnswer = (id: string) => {
     if (selectedId) return;
+    log("quiz", `EncryptionTypeMatchQuiz: ${id === question.type.id ? "poprawna" : "błędna"} odpowiedź (${id})`);
     setSelectedId(id);
     setScore((s) => ({ correct: s.correct + (id === question.type.id ? 1 : 0), total: s.total + 1 }));
   };

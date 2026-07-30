@@ -11,7 +11,7 @@ class DuplexModeScenarioTest {
         DuplexModeScenario scenario = new DuplexModeScenario();
 
         assertThat(scenario.list()).extracting(DuplexMode::mode).contains("FULL", "HALF");
-        assertThat(scenario.list()).hasSize(4);
+        assertThat(scenario.list()).hasSize(6);
     }
 
 }

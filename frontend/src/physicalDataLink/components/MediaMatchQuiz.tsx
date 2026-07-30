@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchTransmissionMedia } from "../api";
 import type { TransmissionMedium } from "../types";
+import { log } from "../../lib/logger";
 
 interface Question {
   medium: TransmissionMedium;
@@ -34,6 +35,7 @@ export function MediaMatchQuiz() {
 
   const handleAnswer = (id: string) => {
     if (selectedId) return;
+    log("quiz", `MediaMatchQuiz: ${id === question.medium.id ? "poprawna" : "błędna"} odpowiedź (${id})`);
     setSelectedId(id);
     setScore((s) => ({ correct: s.correct + (id === question.medium.id ? 1 : 0), total: s.total + 1 }));
   };

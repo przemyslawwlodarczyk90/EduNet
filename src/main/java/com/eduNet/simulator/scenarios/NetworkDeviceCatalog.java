@@ -51,7 +51,22 @@ public class NetworkDeviceCatalog {
                     DeviceBehavior.DISTRIBUTE, "Rozdziela kolejne żądania pomiędzy dostępne serwery zaplecza."),
             new NetworkDevice("proxy", "Serwer proxy", Set.of(APPLICATION),
                     "Pośredniczy w komunikacji między klientem a serwerem docelowym na poziomie aplikacji.",
-                    DeviceBehavior.RELAY_APPLICATION, "Przyjmuje żądanie klienta i przekazuje je dalej w jego imieniu.")
+                    DeviceBehavior.RELAY_APPLICATION, "Przyjmuje żądanie klienta i przekazuje je dalej w jego imieniu."),
+            new NetworkDevice("media_converter", "Konwerter mediów (media converter)", Set.of(PHYSICAL),
+                    "Zamienia sygnał między różnymi mediami transmisyjnymi, np. skrętką miedzianą a światłowodem.",
+                    DeviceBehavior.REPEAT_SIGNAL, "Przekształca sygnał elektryczny na optyczny (lub odwrotnie) bez analizy jego treści."),
+            new NetworkDevice("wireless_range_extender", "Wzmacniacz zasięgu Wi-Fi (repeater bezprzewodowy)", Set.of(PHYSICAL),
+                    "Odbiera sygnał Wi-Fi i wysyła go dalej wzmocniony, wydłużając zasięg sieci bezprzewodowej.",
+                    DeviceBehavior.REPEAT_SIGNAL, "Powtarza otrzymany sygnał radiowy bez analizy jego zawartości."),
+            new NetworkDevice("l3_switch", "Przełącznik warstwy 3 (L3 switch)", Set.of(NETWORK),
+                    "Łączy urządzenia w sieci lokalnej i dodatkowo routuje sprzętowo ruch pomiędzy podsieciami/VLAN-ami, bez oddzielnego routera.",
+                    DeviceBehavior.ROUTE, "Sprawdza adres IP pakietu i kieruje go do właściwej podsieci na podstawie tablicy routingu."),
+            new NetworkDevice("vpn_concentrator", "Koncentrator VPN", Set.of(NETWORK),
+                    "Kończy wiele tuneli VPN nawiązywanych przez zdalnych użytkowników lub oddziały i kieruje odszyfrowany ruch do sieci wewnętrznej.",
+                    DeviceBehavior.TRANSLATE_NETWORKS, "Odszyfrowuje ruch z tunelu VPN i przekazuje go dalej do właściwej sieci docelowej."),
+            new NetworkDevice("ids_ips_sensor", "Sonda IDS/IPS", Set.of(NETWORK),
+                    "Analizuje ruch sieciowy pod kątem sygnatur znanych ataków — w trybie IDS tylko alarmuje, w trybie IPS dodatkowo blokuje.",
+                    DeviceBehavior.FILTER, "Porównuje pakiety z bazą sygnatur ataków i, zależnie od trybu, zgłasza alarm i/lub odrzuca ruch.")
     );
 
     public List<NetworkDevice> list() {

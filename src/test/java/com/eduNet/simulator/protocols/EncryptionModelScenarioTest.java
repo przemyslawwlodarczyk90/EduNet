@@ -10,7 +10,7 @@ class EncryptionModelScenarioTest {
     void containsBothSymmetricAndAsymmetricTypes() {
         EncryptionModelScenario scenario = new EncryptionModelScenario();
 
-        assertThat(scenario.list()).extracting(EncryptionType::id).containsExactly("symmetric", "asymmetric");
+        assertThat(scenario.list()).extracting(EncryptionType::id).containsExactly("symmetric", "asymmetric", "hybrid");
     }
 
 }

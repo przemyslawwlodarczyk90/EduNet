@@ -13,8 +13,8 @@ class NetworkDeviceCatalogTest {
     private final NetworkDeviceCatalog catalog = new NetworkDeviceCatalog();
 
     @Test
-    void listsElevenDevices() {
-        assertThat(catalog.list()).hasSize(11);
+    void listsSixteenDevices() {
+        assertThat(catalog.list()).hasSize(16);
     }
 
     @Test

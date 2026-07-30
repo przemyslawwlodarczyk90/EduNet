@@ -1,8 +1,9 @@
 import { API_BASE_URL } from "../config";
+import { loggedFetch } from "../lib/logger";
 import type { NetworkQualityRequest, NetworkQualityResult, TerminalCommandResult } from "./types";
 
 export async function simulateNetworkQuality(request: NetworkQualityRequest): Promise<NetworkQualityResult> {
-  const response = await fetch(`${API_BASE_URL}/api/quality/simulate`, {
+  const response = await loggedFetch(`${API_BASE_URL}/api/quality/simulate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(request),
@@ -12,7 +13,7 @@ export async function simulateNetworkQuality(request: NetworkQualityRequest): Pr
 }
 
 export async function executeTerminalCommand(command: string, args: string[]): Promise<TerminalCommandResult> {
-  const response = await fetch(`${API_BASE_URL}/api/terminal/execute`, {
+  const response = await loggedFetch(`${API_BASE_URL}/api/terminal/execute`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ command, args }),

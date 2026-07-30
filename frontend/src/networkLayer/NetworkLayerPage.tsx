@@ -15,6 +15,12 @@ import { AddressingModeMatchQuiz } from "./components/AddressingModeMatchQuiz";
 export function NetworkLayerPage() {
   return (
     <div className="fundamentals-page">
+      <section className="layer-model-badge">
+        <p>
+          <strong>Model ISO/OSI — warstwa 3 (sieciowa).</strong> Odpowiada za adresację logiczną (IP) i routing
+          między sieciami (patrz też sekcja "OSI a TCP/IP" w module Fundamenty).
+        </p>
+      </section>
       <section>
         <h2>Kalkulator adresacji i masek podsieci</h2>
         <SubnetCalculatorWidget />

@@ -28,6 +28,14 @@ export interface HttpVersionTimeline {
   description: string;
 }
 
+export interface HttpHistoryMilestone {
+  version: string;
+  year: string;
+  standardOrOrigin: string;
+  keyInnovation: string;
+  description: string;
+}
+
 export interface ConceptTopic {
   id: string;
   name: string;

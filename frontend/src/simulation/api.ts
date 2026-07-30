@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../config";
+import { loggedFetch } from "../lib/logger";
 import type { OsiLayer, TcpIpLayer } from "./types";
 
 export interface ScenarioSummary {
@@ -17,13 +18,13 @@ export interface CodeSnippet {
 export async function fetchScenarios(model: "osi" | "tcpip", layer?: OsiLayer | TcpIpLayer): Promise<ScenarioSummary[]> {
   const params = new URLSearchParams({ model });
   if (layer) params.set("layer", layer);
-  const response = await fetch(`${API_BASE_URL}/api/scenarios?${params.toString()}`);
+  const response = await loggedFetch(`${API_BASE_URL}/api/scenarios?${params.toString()}`);
   if (!response.ok) throw new Error(`Błąd pobierania scenariuszy: ${response.status}`);
   return response.json();
 }
 
 export async function fetchCodeSnippet(scenarioId: string): Promise<CodeSnippet> {
-  const response = await fetch(`${API_BASE_URL}/api/code-snippets/${scenarioId}`);
+  const response = await loggedFetch(`${API_BASE_URL}/api/code-snippets/${scenarioId}`);
   if (!response.ok) throw new Error(`Błąd pobierania kodu: ${response.status}`);
   return response.json();
 }

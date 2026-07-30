@@ -2,6 +2,7 @@ import { NetworkQualitySimulatorView } from "./components/NetworkQualitySimulato
 import { SimulatedTerminal } from "./components/SimulatedTerminal";
 import { DiagnosticToolMatchQuiz } from "./components/DiagnosticToolMatchQuiz";
 import { DiagnoseWithTerminalExercise } from "./components/DiagnoseWithTerminalExercise";
+import { ConceptTopicView } from "../applicationLayer/components/ConceptTopicView";
 
 const SUGGESTED_COMMANDS = ["ping 172.16.0.10", "traceroute 172.16.0.10", "nslookup przyklad.com", "arp -a", "ipconfig", "netstat"];
 
@@ -41,6 +42,11 @@ export function NetworkPerformancePage() {
       <section>
         <h2>Ćwiczenie: zdiagnozuj problem w terminalu</h2>
         <DiagnoseWithTerminalExercise />
+      </section>
+
+      <section>
+        <h2>QoS — priorytetyzacja ruchu</h2>
+        <ConceptTopicView topicId="qos" />
       </section>
     </div>
   );

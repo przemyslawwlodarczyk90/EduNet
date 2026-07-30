@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchNetworkTypes } from "../api";
 import type { NetworkType } from "../types";
+import { log } from "../../lib/logger";
 
 interface Question {
   type: NetworkType;
@@ -34,6 +35,7 @@ export function NetworkTypeMatchQuiz() {
 
   const handleAnswer = (id: string) => {
     if (selectedId) return;
+    log("quiz", `NetworkTypeMatchQuiz: ${id === question.type.id ? "poprawna" : "błędna"} odpowiedź (${id})`);
     setSelectedId(id);
     setScore((s) => ({ correct: s.correct + (id === question.type.id ? 1 : 0), total: s.total + 1 }));
   };

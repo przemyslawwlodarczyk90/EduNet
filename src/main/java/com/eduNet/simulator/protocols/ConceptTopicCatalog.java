@@ -34,7 +34,21 @@ public class ConceptTopicCatalog {
                             "INVITE — inicjator wysyła zaproszenie do rozmowy.",
                             "180 Ringing / 200 OK — odbiorca sygnalizuje dzwonienie, potem akceptuje połączenie.",
                             "ACK — potwierdzenie, po czym zaczyna się właściwa transmisja głosu (zwykle innym protokołem, np. RTP).",
-                            "BYE — zakończenie połączenia."))
+                            "BYE — zakończenie połączenia.")),
+            new ConceptTopic("radius-aaa", "RADIUS i AAA (Authentication, Authorization, Accounting)",
+                    "RADIUS to protokół centralizujący uwierzytelnianie użytkowników i urządzeń — zamiast każdego routera/switcha/VPN-a trzymającego własną listę haseł, wszystkie pytają jeden centralny serwer AAA.",
+                    List.of(
+                            "Authentication — czy to naprawdę ten użytkownik (login/hasło, certyfikat, token)?",
+                            "Authorization — do czego dany użytkownik ma prawo po zalogowaniu (np. które VLAN-y, które komendy)?",
+                            "Accounting — zapis, kto, kiedy i na jak długo się połączył — przydatne do rozliczeń i audytu bezpieczeństwa.",
+                            "Standardowe porty: 1812 (uwierzytelnianie), 1813 (accounting), UDP.")),
+            new ConceptTopic("qos", "QoS — priorytetyzacja ruchu",
+                    "Quality of Service (QoS) to zestaw mechanizmów pozwalających łączu potraktować część ruchu priorytetowo, gdy brakuje przepustowości dla wszystkich na raz.",
+                    List.of(
+                            "Bez QoS wszystkie pakiety są traktowane tak samo — przy przeciążeniu łącza cierpi zarówno rozmowa VoIP, jak i pobieranie pliku w tle.",
+                            "Z QoS ruch czasu rzeczywistego (VoIP, wideokonferencje) dostaje pierwszeństwo przed mniej wrażliwym na opóźnienia ruchem (pobieranie, e-mail).",
+                            "Klasyfikacja pakietów odbywa się m.in. przez pola DSCP w nagłówku IP.",
+                            "QoS nie zwiększa całkowitej przepustowości łącza — tylko zmienia kolejność obsługi pakietów, gdy jest ich za dużo naraz."))
     );
 
     public List<ConceptTopic> list() {

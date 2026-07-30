@@ -5,6 +5,7 @@ import { ArpSpoofingConceptView } from "./components/ArpSpoofingConceptView";
 import { PhishingAwarenessView } from "./components/PhishingAwarenessView";
 import { PhishingRedFlagsQuiz } from "./components/PhishingRedFlagsQuiz";
 import { IdsVsIpsQuiz } from "./components/IdsVsIpsQuiz";
+import { ConceptTopicView } from "../applicationLayer/components/ConceptTopicView";
 
 export function CrossCuttingSecurityPage() {
   return (
@@ -50,6 +51,11 @@ export function CrossCuttingSecurityPage() {
       <section>
         <h2>Rozpoznawanie phishingu</h2>
         <PhishingAwarenessView />
+      </section>
+
+      <section>
+        <h2>RADIUS i AAA</h2>
+        <ConceptTopicView topicId="radius-aaa" />
       </section>
 
       <section className="quizzes">

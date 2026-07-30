@@ -3,6 +3,7 @@ import { fetchNetworkDevices } from "../api";
 import type { NetworkDevice } from "../types";
 import { OSI_LAYER_LABELS, OSI_LAYER_ORDER } from "../../simulation/layerModel";
 import type { OsiLayer } from "../../simulation/types";
+import { log } from "../../lib/logger";
 
 interface Question {
   device: NetworkDevice;
@@ -37,6 +38,7 @@ export function DeviceLayerMatchQuiz() {
 
   const handleAnswer = (layer: OsiLayer) => {
     if (selected) return;
+    log("quiz", `DeviceLayerMatchQuiz: ${layer === question.correctLayer ? "poprawna" : "błędna"} odpowiedź (${layer})`);
     setSelected(layer);
     setScore((s) => ({ correct: s.correct + (layer === question.correctLayer ? 1 : 0), total: s.total + 1 }));
   };

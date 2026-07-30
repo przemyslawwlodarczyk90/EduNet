@@ -1,6 +1,7 @@
 import { Client, type IMessage } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 import { API_BASE_URL } from "./config";
+import { log } from "./lib/logger";
 
 const WS_ENDPOINT = `${API_BASE_URL}/ws`;
 
@@ -30,6 +31,7 @@ class WsClient {
   }
 
   private setState(state: ConnectionState) {
+    log("ws", `stan połączenia: ${this.state} → ${state}`);
     this.state = state;
     this.stateListeners.forEach((listener) => listener(state));
   }
@@ -72,6 +74,7 @@ class WsClient {
     let unsubscribed = false;
     let realSubscriptionId: string | null = null;
 
+    log("ws", `subscribe ${destination}`);
     this.runWhenConnected(() => {
       if (unsubscribed) return;
       realSubscriptionId = this.client.subscribe(destination, callback).id;
@@ -80,6 +83,7 @@ class WsClient {
     return {
       unsubscribe: () => {
         unsubscribed = true;
+        log("ws", `unsubscribe ${destination}`);
         if (realSubscriptionId) {
           this.client.unsubscribe(realSubscriptionId);
         }
@@ -88,6 +92,7 @@ class WsClient {
   }
 
   publish(destination: string, body: string) {
+    log("ws", `publish ${destination}`, body || undefined);
     this.runWhenConnected(() => this.client.publish({ destination, body }));
   }
 }

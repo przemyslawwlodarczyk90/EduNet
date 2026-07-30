@@ -8,12 +8,14 @@ import { NetworkLayerPage } from './networkLayer/NetworkLayerPage'
 import { TransportLayerPage } from './transportLayer/TransportLayerPage'
 import { SessionPresentationPage } from './sessionPresentationLayer/SessionPresentationPage'
 import { ApplicationLayerPage } from './applicationLayer/ApplicationLayerPage'
+import { HttpEvolutionPage } from './httpEvolution/HttpEvolutionPage'
 import { TcpIpModuleHome } from './tcpIpModule/TcpIpModuleHome'
 import { CrossCuttingSecurityPage } from './crossCuttingSecurity/CrossCuttingSecurityPage'
 import { NetworkPerformancePage } from './networkPerformance/NetworkPerformancePage'
 import { CloudNetworksPage } from './cloudNetworks/CloudNetworksPage'
 import { GamificationPage } from './gamification/GamificationPage'
 import { RealSocketLabPage } from './realSocketLab/RealSocketLabPage'
+import { log } from './lib/logger'
 import './App.css'
 
 type View =
@@ -23,6 +25,7 @@ type View =
   | 'transport-layer'
   | 'session-presentation-layer'
   | 'application-layer'
+  | 'http-evolution'
   | 'tcpip-module'
   | 'cross-cutting-security'
   | 'network-performance'
@@ -32,8 +35,13 @@ type View =
   | 'scenarios'
 
 function App() {
-  const [view, setView] = useState<View>('fundamentals')
+  const [view, setViewState] = useState<View>('fundamentals')
   const [selectedScenarioId, setSelectedScenarioId] = useState<string | null>(null)
+
+  const setView = (nextView: View) => {
+    log('nav', `${view} → ${nextView}`)
+    setViewState(nextView)
+  }
 
   return (
     <main className="app">
@@ -46,22 +54,25 @@ function App() {
           Fundamenty
         </button>
         <button className={view === 'physical-data-link' ? 'active' : ''} onClick={() => setView('physical-data-link')}>
-          Warstwa 1-2 (Fizyczna / Łącza danych)
+          Warstwa 1-2 (Fizyczna / Łącza danych) — model ISO/OSI
         </button>
         <button className={view === 'network-layer' ? 'active' : ''} onClick={() => setView('network-layer')}>
-          Warstwa 3 (Sieciowa)
+          Warstwa 3 (Sieciowa) — model ISO/OSI
         </button>
         <button className={view === 'transport-layer' ? 'active' : ''} onClick={() => setView('transport-layer')}>
-          Warstwa 4 (Transportowa)
+          Warstwa 4 (Transportowa) — model ISO/OSI
         </button>
         <button
           className={view === 'session-presentation-layer' ? 'active' : ''}
           onClick={() => setView('session-presentation-layer')}
         >
-          Warstwa 5-6 (Sesji / Prezentacji)
+          Warstwa 5-6 (Sesji / Prezentacji) — model ISO/OSI
         </button>
         <button className={view === 'application-layer' ? 'active' : ''} onClick={() => setView('application-layer')}>
-          Warstwa 7 (Aplikacji)
+          Warstwa 7 (Aplikacji) — model ISO/OSI
+        </button>
+        <button className={view === 'http-evolution' ? 'active' : ''} onClick={() => setView('http-evolution')}>
+          HTTP: ewolucja protokołu i jego wersje
         </button>
         <button className={view === 'tcpip-module' ? 'active' : ''} onClick={() => setView('tcpip-module')}>
           Model TCP/IP (4 warstwy)
@@ -103,6 +114,8 @@ function App() {
       {view === 'session-presentation-layer' && <SessionPresentationPage />}
 
       {view === 'application-layer' && <ApplicationLayerPage />}
+
+      {view === 'http-evolution' && <HttpEvolutionPage />}
 
       {view === 'tcpip-module' && <TcpIpModuleHome />}
 

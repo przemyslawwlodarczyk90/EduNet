@@ -24,6 +24,8 @@ export function GamificationPage({ onNavigate }: GamificationPageProps) {
         <p>Te quizy łączą pytania z kilku wcześniejszych sprintów, sprawdzając wynik na serwerze po udzieleniu odpowiedzi.</p>
         <QuizFromCatalog quizId="review-osi-tcpip" />
         <QuizFromCatalog quizId="review-security-performance" />
+        <QuizFromCatalog quizId="review-http-evolution" />
+        <QuizFromCatalog quizId="review-performance-cloud" />
       </section>
 
       <section>
