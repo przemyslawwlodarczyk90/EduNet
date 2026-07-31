@@ -1,22 +1,23 @@
 import { useState } from 'react'
-import { ConnectionStatus } from './ConnectionStatus'
-import { ScenarioSelector } from './simulation/components/ScenarioSelector'
-import { ScenarioPage } from './simulation/ScenarioPage'
-import { FundamentalsPage } from './fundamentals/FundamentalsPage'
-import { PhysicalDataLinkPage } from './physicalDataLink/PhysicalDataLinkPage'
-import { NetworkLayerPage } from './networkLayer/NetworkLayerPage'
-import { TransportLayerPage } from './transportLayer/TransportLayerPage'
-import { SessionPresentationPage } from './sessionPresentationLayer/SessionPresentationPage'
-import { ApplicationLayerPage } from './applicationLayer/ApplicationLayerPage'
-import { HttpEvolutionPage } from './httpEvolution/HttpEvolutionPage'
-import { TcpIpModuleHome } from './tcpIpModule/TcpIpModuleHome'
-import { CrossCuttingSecurityPage } from './crossCuttingSecurity/CrossCuttingSecurityPage'
-import { NetworkPerformancePage } from './networkPerformance/NetworkPerformancePage'
-import { CloudNetworksPage } from './cloudNetworks/CloudNetworksPage'
-import { GamificationPage } from './gamification/GamificationPage'
-import { RealSocketLabPage } from './realSocketLab/RealSocketLabPage'
-import { log } from './lib/logger'
-import './App.css'
+import { Link } from 'react-router-dom'
+import { ConnectionStatus } from '../ConnectionStatus'
+import { ScenarioSelector } from '../simulation/components/ScenarioSelector'
+import { ScenarioPage } from '../simulation/ScenarioPage'
+import { FundamentalsPage } from '../fundamentals/FundamentalsPage'
+import { PhysicalDataLinkPage } from '../physicalDataLink/PhysicalDataLinkPage'
+import { NetworkLayerPage } from '../networkLayer/NetworkLayerPage'
+import { TransportLayerPage } from '../transportLayer/TransportLayerPage'
+import { SessionPresentationPage } from '../sessionPresentationLayer/SessionPresentationPage'
+import { ApplicationLayerPage } from '../applicationLayer/ApplicationLayerPage'
+import { HttpEvolutionPage } from '../httpEvolution/HttpEvolutionPage'
+import { TcpIpModuleHome } from '../tcpIpModule/TcpIpModuleHome'
+import { CrossCuttingSecurityPage } from '../crossCuttingSecurity/CrossCuttingSecurityPage'
+import { NetworkPerformancePage } from '../networkPerformance/NetworkPerformancePage'
+import { CloudNetworksPage } from '../cloudNetworks/CloudNetworksPage'
+import { GamificationPage } from '../gamification/GamificationPage'
+import { RealSocketLabPage } from '../realSocketLab/RealSocketLabPage'
+import { log } from '../lib/logger'
+import '../App.css'
 
 type View =
   | 'fundamentals'
@@ -34,7 +35,7 @@ type View =
   | 'real-socket-lab'
   | 'scenarios'
 
-function App() {
+function NetworksApp() {
   const [view, setViewState] = useState<View>('fundamentals')
   const [selectedScenarioId, setSelectedScenarioId] = useState<string | null>(null)
 
@@ -46,7 +47,9 @@ function App() {
   return (
     <main className="app">
       <header className="app-header">
-        <h1>EduNet</h1>
+        <h1>
+          <Link to="/" className="app-block-back">← Wybór bloku</Link> EduNet: Sieci komputerowe
+        </h1>
         <ConnectionStatus />
       </header>
       <nav className="main-nav mode-toggle">
@@ -139,4 +142,4 @@ function App() {
   )
 }
 
-export default App
+export default NetworksApp

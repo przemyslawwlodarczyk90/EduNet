@@ -1563,3 +1563,80 @@
   border-radius: 6px;
   padding: 8px;
 }
+
+/* Ekran wyboru bloku (LandingChooser) i powrót do niego z wnętrza bloku */
+
+.app-block-back {
+  font-size: 14px;
+  margin-right: 12px;
+  text-decoration: none;
+  color: #2ecc71;
+}
+
+.app-block-back:hover {
+  text-decoration: underline;
+}
+
+.landing-chooser {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 24px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.landing-chooser h1 {
+  margin-bottom: 8px;
+}
+
+.landing-subtitle {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.landing-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.landing-card {
+  flex: 1 1 320px;
+  max-width: 380px;
+  border: 1px solid #999;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  display: block;
+  background: transparent;
+}
+
+.landing-card:hover {
+  transform: translateY(-4px);
+  border-color: #2ecc71;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.landing-card-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.landing-card h2 {
+  margin: 0 0 8px;
+}
+
+.landing-card p {
+  color: #555;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.landing-card-cta {
+  font-weight: bold;
+  color: #2ecc71;
+}
